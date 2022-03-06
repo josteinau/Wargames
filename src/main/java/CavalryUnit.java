@@ -7,17 +7,15 @@ public class CavalryUnit extends Unit{
         super(name,health,20, 12);
     }
 
-    @Override
     public int getAttackBonus() {
         int bonusDamage = 0;
         int numOfAttacks;
-        for(numOfAttacks = 1; numOfAttacks < 15; numOfAttacks++){
+        for(numOfAttacks = 0; numOfAttacks < 15; numOfAttacks++){
             if(numOfAttacks==1){
                 bonusDamage = 4+2; //charge damage + initial damage.
             }else{
                 bonusDamage = 2;
             }
-            numOfAttacks++;
         }
         return bonusDamage;
     }

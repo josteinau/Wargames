@@ -12,12 +12,17 @@ public abstract class Unit {
         this.armor = armor;
     }
 
-    public void attack(Unit opponent){
-        if(attack + this.getAttackBonus()>= this.health + this.getResistBonus()){ // 0 hp
-            System.out.println(this.name + " died"); // boolean isDead()?
-        } else{
-            this.health = (this.health + this.getResistBonus()) - (attack + this.getAttackBonus());
-            System.out.println("Remaining life for " + this.name + " equals " + this.health);
+    public void attack(Unit opponent) {
+        int hit = this.attack + this.getAttackBonus();
+        int defence = opponent.getArmor() + opponent.getResistBonus();
+        int newHealth;
+        if (this.attack + this.getAttackBonus() >= opponent.health + opponent.getResistBonus()) { // 0 hp
+            System.out.println(opponent.name + " died"); // boolean isDead()?
+        } else {
+            newHealth = (opponent.health + defence) - hit;
+            System.out.println(this.name + " attacks " + opponent.name +  " for " + hit + " damage." +
+                    "\nRemaining life for " + opponent.name + " equals " + newHealth );
+            opponent.setHealth(opponent.health);
         }
     }
 
@@ -52,7 +57,9 @@ public abstract class Unit {
     public void setArmor(int armor) {
         this.armor = armor;
     }
+
     public abstract int getAttackBonus();
+
     public abstract int getResistBonus();
 
     public String toString() {
