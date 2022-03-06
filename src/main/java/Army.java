@@ -24,23 +24,29 @@ public class Army {
     public void remove(Unit unit){
         units.remove(unit);
     }
+    // Checks if the list units has any units.
     public boolean hasUnits(){
         if(units.isEmpty() || units == null){
             return false;
         }
         return true;
     }
+
+    // prints all units to screen, not tested.
     public void getAllUnits(List<Unit> units){
         for(int i = 0; i< units.size(); i++){
             System.out.println(units.get(i) + " ");
         }
     }
+
+    // Find random unit in the units-array.
     public Unit getRandomElement(){
         Random rand = new Random();
         int index = rand.nextInt(units.size());
         Unit randomUnit = units.get(index);
         return randomUnit;
     }
+    // Print army to screen, missing attributes...
     public String toString(){ // Add more toString
         return "Army with name: " + name + "";
     }
