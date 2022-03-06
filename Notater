@@ -1,0 +1,2 @@
+subclass = fox extends animal
+Animal = superclass
