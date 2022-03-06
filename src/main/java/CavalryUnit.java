@@ -7,7 +7,7 @@ public class CavalryUnit extends Unit{
         super(name,health,20, 12);
     }
 
-    public int getAttackBonus() {
+    public int getAttackBonus() { // Feil også her
         int bonusDamage = 0;
         int numOfAttacks;
         for(numOfAttacks = 0; numOfAttacks < 15; numOfAttacks++){

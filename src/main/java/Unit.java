@@ -15,14 +15,13 @@ public abstract class Unit {
     public void attack(Unit opponent) {
         int hit = this.attack + this.getAttackBonus();
         int defence = opponent.getArmor() + opponent.getResistBonus();
-        int newHealth;
         if (this.attack + this.getAttackBonus() >= opponent.health + opponent.getResistBonus()) { // 0 hp
             System.out.println(opponent.name + " died"); // boolean isDead()?
         } else {
-            newHealth = (opponent.health + defence) - hit;
+            int newHealth = (opponent.health + defence) - hit;
             System.out.println(this.name + " attacks " + opponent.name +  " for " + hit + " damage." +
                     "\nRemaining life for " + opponent.name + " equals " + newHealth );
-            opponent.setHealth(opponent.health);
+            opponent.setHealth(newHealth);
         }
     }
 
