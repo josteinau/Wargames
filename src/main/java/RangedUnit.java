@@ -14,17 +14,17 @@ public class RangedUnit extends Unit{
 
     @Override
     public int getResistBonus() {
-        int damage = 0;
+        int bonusDamage = 0;
         for(int numOfAttacks = 1; numOfAttacks<15; numOfAttacks++){
             if(numOfAttacks==1){
-                damage = 6;
+                bonusDamage = 6;
             }if(numOfAttacks==2){
-                damage = 4;
+                bonusDamage = 4;
             }else{
-                damage = 2;
+                bonusDamage = 2;
             }
             numOfAttacks++;
         }
-        return damage;
+        return bonusDamage;
     }
 }
