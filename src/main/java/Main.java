@@ -18,7 +18,6 @@ public class Main {
         commanderElf.attack(cavUnit);
         System.out.println("\n"+cavUnit);
         cavUnit.attack(commanderElf);
-        System.out.println(commanderElf.getHealth());
 
         // Testing infantry default attack 15 and armor
         InfantryUnit inf = new InfantryUnit("Goblin", 100);

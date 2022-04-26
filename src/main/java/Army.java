@@ -56,7 +56,7 @@ public class Army {
 
     // Print army to screen, missing attributes...
     public String toString() { // Add more toString
-        return "Army with name: " + name + "";
+        return name + "[" + super.toString();
     }
 
     public boolean equals(Object obj) {
