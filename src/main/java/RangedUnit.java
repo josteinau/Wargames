@@ -1,5 +1,8 @@
 public class RangedUnit extends Unit {
 
+
+    // Standard ranger, -health, + attack
+
     public RangedUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
     }

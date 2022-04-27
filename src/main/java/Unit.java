@@ -62,6 +62,6 @@ public abstract class Unit {
     public abstract int getResistBonus();
 
     public String toString() {
-        return name + " [Hitpoints=" + health + " Attack=" + attack +"+(" + this.getAttackBonus() + ")" +" Armor=" + armor +"+("+this.getResistBonus()+")"+ "]";
+        return name + " [Hitpoints=" + health + " Attack=" + attack + "+(" + this.getAttackBonus() + ")" + " Armor=" + armor + "+(" + this.getResistBonus() + ")" + "]";
     }
 }

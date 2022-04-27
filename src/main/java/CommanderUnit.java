@@ -1,5 +1,6 @@
 public class CommanderUnit extends CavalryUnit{
 
+    // Carry +tier unit, + armor, + health, + attack
     public CommanderUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
     }

@@ -1,5 +1,7 @@
 public class CavalryUnit extends Unit{
 
+    // Horseunit, + attack, + health
+
     public CavalryUnit(String name, int health, int attack, int armor){
         super(name,health,attack, armor);
     }

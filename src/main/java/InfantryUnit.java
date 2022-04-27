@@ -1,6 +1,8 @@
 public class InfantryUnit extends Unit {
 
 
+    // Footsoldier
+
     public InfantryUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
     }
