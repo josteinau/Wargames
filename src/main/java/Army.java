@@ -32,7 +32,7 @@ public class Army {
     }
 
     // Checks if the list units has any units.
-    public boolean hasUnits() {
+    public boolean hasUnits(List<Unit> units) {
         if (units.isEmpty() || units == null) {
             return false;
         }

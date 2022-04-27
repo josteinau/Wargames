@@ -3,6 +3,7 @@ public abstract class Unit {
     int health;
     int attack;
     int armor;
+    static int numberOfAttacks;
 
 
     public Unit(String name, int health, int attack, int armor) {
@@ -16,13 +17,17 @@ public abstract class Unit {
         int hit = this.attack + this.getAttackBonus(); // Total attack dmg.
         int defence = opponent.getArmor() + opponent.getResistBonus(); // opponent defence
         if (this.attack + this.getAttackBonus() >= opponent.health + opponent.getResistBonus()) { // 0 hp
-            System.out.println(opponent.name + " died"); // boolean isDead()?
+            System.out.println(opponent.name + " died"); // boolean isDead()? if isDead remove.unit
         } else {
             int newHealth = (opponent.health + defence) - hit; // Defender/opponent hp after attack. !!!! INCLUDING ARMOR 'AS' HP
             System.out.println(this.name + " attacks " + opponent.name + " for " + hit + " damage." +
                     "\nRemaining life for " + opponent.name + " equals " + newHealth);
             opponent.setHealth(newHealth);
+            numberOfAttacks++;
         }
+    }
+    public int numOfattacks(){
+        return numberOfAttacks;
     }
 
     public String getName() {

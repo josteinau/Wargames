@@ -7,8 +7,8 @@ public class RangedUnit extends Unit {
         super(name, health, attack, armor);
     }
 
-    public RangedUnit(String name, int health) {
-        super(name, health, 15, 8);
+    public RangedUnit(String name , int health) {
+        super(name + " (R)", health, 15, 8);
     }
 
     @Override
@@ -18,6 +18,7 @@ public class RangedUnit extends Unit {
 
     @Override
     public int getResistBonus() { // Feil men fikser senere.
+        int numatk = 0;
         int bonusDamage = 0;
         for (int numOfAttacks = 1; numOfAttacks < 15; numOfAttacks++) {
             if (numOfAttacks == 1) {

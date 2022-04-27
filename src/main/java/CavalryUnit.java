@@ -3,10 +3,12 @@ public class CavalryUnit extends Unit{
     // Horseunit, + attack, + health
 
     public CavalryUnit(String name, int health, int attack, int armor){
+
         super(name,health,attack, armor);
     }
     public CavalryUnit(String name, int health){
-        super(name,health,20, 12);
+
+        super(name + " (Cav)",health,20, 12);
     }
 
     public int getAttackBonus() { // Feil også her
