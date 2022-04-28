@@ -8,7 +8,7 @@ public class CavalryUnit extends Unit{
     }
     public CavalryUnit(String name, int health){
 
-        super(name + " (Cav)",health,20, 12);
+        super(name + "(C)",health,20, 12);
     }
 
     public int getAttackBonus() { // Feil også her

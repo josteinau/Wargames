@@ -8,7 +8,7 @@ public class RangedUnit extends Unit {
     }
 
     public RangedUnit(String name , int health) {
-        super(name + " (R)", health, 15, 8);
+        super(name + "(R)", health, 15, 8);
     }
 
     @Override

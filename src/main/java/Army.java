@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Army {
     String name;
@@ -24,7 +25,7 @@ public class Army {
     }
 
     public void addAll(List<Unit> newUnit) {
-        for(int i = 0; i < units.size(); i++){
+        for (int i = 0; i < units.size(); i++) {
             addUnit(newUnit.get(i));
         }
     }
@@ -70,4 +71,12 @@ public class Army {
         Army otherArmy = (Army) obj;
         return this.name.equals(otherArmy.name);
     }
+
+    public List<Unit> getInfantryUnits() {
+        List<Unit> infUnit = units.stream().filter(item -> item instanceof InfantryUnit).collect(Collectors.toList());
+        System.out.println("Called! + " + units.stream().filter(item -> item instanceof InfantryUnit).collect(Collectors.toList()));
+        return infUnit;
+    }
+    // contains.obj
+
 }

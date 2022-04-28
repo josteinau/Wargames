@@ -6,6 +6,7 @@ public abstract class Unit {
     static int numberOfAttacks;
 
 
+    // Units has (X) after name in the subclasses to indicate which type of unit.
     public Unit(String name, int health, int attack, int armor) {
         this.name = name;
         this.health = health;

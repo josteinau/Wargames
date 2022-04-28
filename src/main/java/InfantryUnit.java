@@ -7,7 +7,7 @@ public class InfantryUnit extends Unit {
         super(name, health, attack, armor);
     }
     public InfantryUnit(String name, int health) {
-        super(name, health, 15, 10);
+        super(name + "(I)", health, 15, 10);
 
     }
     public int getAttackBonus() {
