@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Army {
     String name;
-    List<Unit> units; // Feil? opprett i mainklassen ist
+    ArrayList<Unit> units; // Feil? opprett i mainklassen ist
 
     public Army(String name) {
         this.name = name;
@@ -23,8 +23,10 @@ public class Army {
         units.add(newUnit);
     }
 
-    public void addAll(List<Unit> units) {
-
+    public void addAll(List<Unit> newUnit) {
+        for(int i = 0; i < units.size(); i++){
+            addUnit(newUnit.get(i));
+        }
     }
 
     public void remove(Unit unit) {
@@ -39,15 +41,15 @@ public class Army {
         return true;
     }
 
-    // prints all units to screen, not tested.
+    // prints all units to screen, working!
     public void getAllUnits(List<Unit> units) {
         for (int i = 0; i < units.size(); i++) {
             System.out.println(units.get(i) + " ");
         }
     }
 
-    // Find random unit in the units-array.
-    public Unit getRandomElement() {
+    // Find random unit in the units-array. Tested and works!
+    public Unit getRandomElement(List<Unit> units) {
         Random rand = new Random();
         int index = rand.nextInt(units.size());
         Unit randomUnit = units.get(index);

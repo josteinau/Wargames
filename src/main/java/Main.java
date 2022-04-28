@@ -4,10 +4,13 @@ import org.w3c.dom.ranges.Range;
 
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
+        // battle class???
 
         // Creating the horde
         List<Unit> orcs = new ArrayList<Unit>();
@@ -15,18 +18,24 @@ public class Main {
         orcs.add(new CavalryUnit("Unit 2",25));
         orcs.add(new CavalryUnit("Unit 3",25));
         Army Horde = new Army("Orcarmy", orcs);
+        System.out.println("Display orc army");
         Horde.getAllUnits(orcs);
+        System.out.println("Random unit:" + Horde.getRandomElement(orcs));
+        System.out.println("Checks if has units, expect true:" + Horde.hasUnits(orcs));
 
         // Creating the humans
 
         List<Unit> hoomans = new ArrayList<Unit>();
+        System.out.println("Display all humans");
+        for(int i = 1; i < 10; i++) {
+            hoomans.add(new CavalryUnit("Unit 3", 25));
+        }
         hoomans.add(new CavalryUnit("Knut",25));
         hoomans.add(new CavalryUnit("Per",25));
         hoomans.add(new CavalryUnit("Jøss",25));
         hoomans.add(new RangedUnit("Rangeknut",25));
         Army Humans = new Army("The human army", hoomans);
         Humans.getAllUnits(hoomans);
-        System.out.println(Humans.hasUnits(hoomans)); // expect true
 
 
 

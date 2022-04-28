@@ -26,7 +26,8 @@ public abstract class Unit {
             numberOfAttacks++;
         }
     }
-    public int numOfattacks(){
+
+    public int numOfattacks() {
         return numberOfAttacks;
     }
 
@@ -65,6 +66,14 @@ public abstract class Unit {
     public abstract int getAttackBonus();
 
     public abstract int getResistBonus();
+
+    public boolean isDead() {
+        if (health + armor <= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public String toString() {
         return name + " [Hitpoints=" + health + " Attack=" + attack + "+(" + this.getAttackBonus() + ")" + " Armor=" + armor + "+(" + this.getResistBonus() + ")" + "]";
