@@ -19,13 +19,20 @@ public class Main {
         orcs.add(new CavalryUnit("Unit3",25));
         orcs.add(new RangedUnit("Rango",25));
         orcs.add(new InfantryUnit("Pls", 25));
+        orcs.add(new InfantryUnit("Pls2", 25));
+        orcs.add(new InfantryUnit("Pls3", 25));
+
         orcs.add(new CommanderUnit("Bossman",1000));
+        orcs.add(new CommanderUnit("Bossma22n",1000));
 
         Army Horde = new Army("Orcarmy", orcs);
         System.out.println("Display orc army");
         Horde.getAllUnits(orcs);
         System.out.println("Infunits here");
-        System.out.println(Horde.getInfantryUnits());
+        System.out.println(Horde.getCommanderUnits(orcs));
+        System.out.println(Horde.getCavalryUnits(orcs));
+        System.out.println(Horde.getInfantryUnits(orcs));
+        System.out.println(Horde.getRangedUnits(orcs));
 
         System.out.println("Random unit: " + Horde.getRandomElement(orcs));
         System.out.println("Checks if has units, expect true:" + Horde.hasUnits(orcs));

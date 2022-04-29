@@ -72,11 +72,27 @@ public class Army {
         return this.name.equals(otherArmy.name);
     }
 
-    public List<Unit> getInfantryUnits() {
-        List<Unit> infUnit = units.stream().filter(item -> item instanceof InfantryUnit).collect(Collectors.toList());
-        System.out.println("Called! + " + units.stream().filter(item -> item instanceof InfantryUnit).collect(Collectors.toList()));
-        return infUnit;
+    // 4 methods to get specific units into a list. Printed as: XXXX units: [1,2,..,n]
+    public List<Unit> getInfantryUnits(List<Unit> units) {
+        List<Unit> infUnits = units.stream().filter(item -> item instanceof InfantryUnit).collect(Collectors.toList());
+        System.out.println("Infantry units:");
+        return infUnits;
     }
-    // contains.obj
+    public List<Unit> getCavalryUnits(List<Unit> units) {
+        List<Unit> cavUnits = units.stream().filter(item -> item instanceof CavalryUnit).collect(Collectors.toList());
+        System.out.println("Cavalry units:");
+        return cavUnits;
+    }
+    public List<Unit> getRangedUnits(List<Unit> units) {
+        List<Unit> ranUnits = units.stream().filter(item -> item instanceof RangedUnit).collect(Collectors.toList());
+        System.out.println("Ranged units:");
+        return ranUnits;
+    }
+    public List<Unit> getCommanderUnits(List<Unit> units) {
+        List<Unit> comUnits = units.stream().filter(item -> item instanceof CommanderUnit).collect(Collectors.toList());
+        System.out.println("Commander units:");
+        return comUnits;
+    }
+
 
 }
