@@ -1,4 +1,12 @@
-public abstract class Unit {
+import java.io.Serializable;
+
+/* This is a class for units.
+* A unit has a name, health, attack damage and armor points.
+* The unit class is the superclass to CavalryUnit, CommanderUnit, InfantryUnit and RangedUnit-classes.
+* The unit can attack an opponent, which can result in death for the defending unit or the attacking unit.
+ */
+
+public abstract class Unit implements Serializable {
     String name;
     int health;
     int attack;

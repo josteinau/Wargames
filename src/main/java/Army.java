@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -34,7 +35,7 @@ public class Army {
         units.remove(unit);
     }
 
-    // Checks if the list units has any units.
+    // Checks if the units-list has any units.
     public boolean hasUnits(List<Unit> units) {
         if (units.isEmpty() || units == null) {
             return false;
@@ -42,7 +43,7 @@ public class Army {
         return true;
     }
 
-    // prints all units to screen, working!
+    // Prints all units to screen, ex: Horde.getAllUnits(orcs);
     public void getAllUnits(List<Unit> units) {
         for (int i = 0; i < units.size(); i++) {
             System.out.println(units.get(i) + " ");
@@ -50,17 +51,22 @@ public class Army {
     }
 
     // Find random unit in the units-array. Tested and works!
-    public Unit getRandomElement(List<Unit> units) {
+    public Unit getRandomUnit(List<Unit> units) {
         Random rand = new Random();
         int index = rand.nextInt(units.size());
         Unit randomUnit = units.get(index);
         return randomUnit;
     }
 
-    // Print army to screen, missing attributes...
-    public String toString() { // Add more toString
-        return name + "[" + super.toString();
+    // FIX THE TOSTRING METHOD ATM ITS PRINTING army.getName()+[[]
+    public String toString() {
+        String results = "+";
+        for(Unit d : units) {
+            results += d.toString(); //if you implement toString() for Dog then it will be added here
+        }
+        return name + " [" + results + "]";
     }
+
 
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -72,27 +78,50 @@ public class Army {
         return this.name.equals(otherArmy.name);
     }
 
-    // 4 methods to get specific units into a list. Printed as: XXXX units: [1,2,..,n]
+    // 4 methods to get specific units into a list. In lambda and stream as required.
+    // Printed as: XXXX units: [1,2,..,n] -> Returns [] if empty
     public List<Unit> getInfantryUnits(List<Unit> units) {
         List<Unit> infUnits = units.stream().filter(item -> item instanceof InfantryUnit).collect(Collectors.toList());
         System.out.println("Infantry units:");
         return infUnits;
     }
+
     public List<Unit> getCavalryUnits(List<Unit> units) {
         List<Unit> cavUnits = units.stream().filter(item -> item instanceof CavalryUnit).collect(Collectors.toList());
         System.out.println("Cavalry units:");
         return cavUnits;
     }
+
     public List<Unit> getRangedUnits(List<Unit> units) {
         List<Unit> ranUnits = units.stream().filter(item -> item instanceof RangedUnit).collect(Collectors.toList());
         System.out.println("Ranged units:");
         return ranUnits;
     }
+
     public List<Unit> getCommanderUnits(List<Unit> units) {
         List<Unit> comUnits = units.stream().filter(item -> item instanceof CommanderUnit).collect(Collectors.toList());
         System.out.println("Commander units:");
         return comUnits;
     }
+
+
+    // Not required methods.
+
+    // Returns the armys total healthpoints.
+    public int getArmyHitpoints(List<Unit> units) {
+        int sum = 0;
+        for (Unit unit : units) {
+            sum += unit.getHealth();
+        }
+        return sum;
+        //int sumHealthpoints = units.stream().map(s -> s.getHealth()).reduce((a1,a2)a1+a2).get();
+    }
+    // get total damage
+    // get total armor
+    // get total resbonus etc...
+    // Create default-values in constructors??
+
+    // need to add checks for that the correct unitlist is chosen from correct army.
 
 
 }

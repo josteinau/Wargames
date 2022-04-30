@@ -9,4 +9,7 @@ public class Battle {
         this.armyOne = new ArrayList<>();
         this.armyTwo = new ArrayList<>();
     }
+
+    // getAllUnits().attack().getAllUnits() etc
+    // Alternate attacks getRandomUnit(); in for loop untill army.size() is done.
 }

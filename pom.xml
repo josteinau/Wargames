@@ -7,6 +7,14 @@
     <groupId>josteiau.ntnu.Wargames</groupId>
     <artifactId>Wargames</artifactId>
     <version>0.0.1</version>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
