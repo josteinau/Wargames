@@ -1,13 +1,17 @@
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Battle {
-    private ArrayList<Army> armyOne;
-    private ArrayList<Army> armyTwo;
+    private List<Army> armyOne;
+    private List<Army> armyTwo;
 
     public Battle(){
         this.armyOne = new ArrayList<>();
         this.armyTwo = new ArrayList<>();
+    }
+    public void armyBattle(List<Army> armyOne, List<Army> armyTwo){
+
     }
 
     // getAllUnits().attack().getAllUnits() etc

@@ -1,9 +1,9 @@
 import java.io.Serializable;
 
 /* This is a class for units.
-* A unit has a name, health, attack damage and armor points.
-* The unit class is the superclass to CavalryUnit, CommanderUnit, InfantryUnit and RangedUnit-classes.
-* The unit can attack an opponent, which can result in death for the defending unit or the attacking unit.
+ * A unit has a name, health, attack damage and armor points.
+ * The unit class is the superclass to CavalryUnit, CommanderUnit, InfantryUnit and RangedUnit-classes.
+ * The unit can attack an opponent, which can result in death for the defending unit or the attacking unit.
  */
 
 public abstract class Unit implements Serializable {
@@ -26,9 +26,11 @@ public abstract class Unit implements Serializable {
         int hit = this.attack + this.getAttackBonus(); // Total attack dmg.
         int defence = opponent.getArmor() + opponent.getResistBonus(); // opponent defence
         if (this.attack + this.getAttackBonus() >= opponent.health + opponent.getResistBonus()) { // 0 hp
-            System.out.println(opponent.name + " died"); // boolean isDead()? if isDead remove.unit
+            System.out.println(this.name + " attacks " + opponent.name + " for " + hit + " damage.");
+            System.out.println(opponent.name + " died");// boolean isDead()? if isDead remove.unit
+            opponent.health = 0;
         } else {
-            int newHealth = (opponent.health + defence) - hit; // Defender/opponent hp after attack. !!!! INCLUDING ARMOR 'AS' HP
+            int newHealth = (opponent.health) - hit; // Defender/opponent hp after attack. !!!! INCLUDING ARMOR 'AS' HP
             System.out.println(this.name + " attacks " + opponent.name + " for " + hit + " damage." +
                     "\nRemaining life for " + opponent.name + " equals " + newHealth);
             opponent.setHealth(newHealth);
@@ -76,11 +78,20 @@ public abstract class Unit implements Serializable {
 
     public abstract int getResistBonus();
 
+    /* public String generateRandomName(String randomName){
+    if(orc){
+    array[randomOrcNames]
+    if(human){
+    array[otherRandomNames]
+    return randomName
+     */
+
     public boolean isDead() {
-        if (health + armor <= 0) {
+        if (health <= 0) {
             return true;
         } else {
             return false;
+
         }
     }
 

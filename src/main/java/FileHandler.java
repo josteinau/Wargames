@@ -11,8 +11,11 @@ Unit-type Unit-name(x) Unit-health. x represents a letter that indicates which t
  */
 public class FileHandler {
     private static final String NEWLINE = "\n";
+    Scanner scan = new Scanner(System.in);
+    List<Army> army;
+
     /*
-    OBS!! DO filepath more robust!
+    Do filepath more robust!
     String altOne = "src" + File.separator + "main" + File.separator + "resources";
     String altTwo = FileSystems.getDefault().getPath("src", "main", "resources").toString();
      */
@@ -23,16 +26,19 @@ public class FileHandler {
             throw new IOException("Wrong file format, only filename.csv allowed!");
         }
         try (FileWriter fileWriter = new FileWriter(file)) {
+            fileWriter.write( "FIKSE THIS.ARMY"+"\n");
             for (Unit unit : units) {
                 String line = unit.getClass().getName() + " " + unit.getName() + " " + unit.getHealth();
                 fileWriter.write(line + NEWLINE);
+
             }
-            System.out.println("Units to file completed!");
+            System.out.println("Units to file completed!"); // According to JavaDoc files are closed in Files.write
         } catch (IOException e) {
             throw new IOException("unable to write unit file: " + e.getMessage());
         }
     }
 
+    // Reads unit from .csv file.
     public List<Unit> readUnits(File file) throws IOException {
         if (!file.getName().endsWith(".csv")) {
             throw new IOException("Wrong file format, only filename.csv allowed!");
@@ -55,6 +61,8 @@ public class FileHandler {
                 String obj = units.getClass().getName();
                 obj = tokens[0];
                 String name = tokens[1];
+                // Unit unit = new Unit(obj, name, hp);
+                //add.(unit)
             }
         } catch (IOException e) {
             throw new IOException(("Unable to read unit data from file '" + file.getName() + "':" + e.getMessage()));
@@ -62,17 +70,21 @@ public class FileHandler {
         return units;
     }
 
-    // Simple write to file method. Not 100% yet. Gonna use util.Scanner
+    // Simple write to file method. Not 100% yet. Gonna use BUFFEREDREADER
     public void writeToFile(File file) {
+        Scanner scan = new Scanner(System.in);
         FileWriter fileWriter = null;
         try {
+            // Add BUFFEREDREADER here.
             fileWriter = new FileWriter(file);
-            fileWriter.write("Hello test");
+            String input = scan.nextLine();
+            fileWriter.write(input);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
                 if (fileWriter != null) {
+                    scan.close();
                     fileWriter.close();
                 }
             } catch (IOException e) {

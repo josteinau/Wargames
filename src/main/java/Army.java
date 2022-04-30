@@ -1,12 +1,10 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.sql.Array;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Army {
     String name;
-    ArrayList<Unit> units; // Feil? opprett i mainklassen ist
+    List<Unit> units;
 
     public Army(String name) {
         this.name = name;
@@ -31,12 +29,23 @@ public class Army {
         }
     }
 
-    public void remove(Unit unit) {
-        units.remove(unit);
+    // Fix remove function to return new array without deleted obj?
+    public void remove() {
+        List<Unit> newUsers = new ArrayList<Unit>();
+        for (Unit unit : units)
+        {
+            if (unit.isDead())
+            {
+                newUsers.add(unit);
+            }
+        }
+        units = newUsers;
+        System.out.println("Removed");
     }
 
     // Checks if the units-list has any units.
-    public boolean hasUnits(List<Unit> units) {
+    public boolean hasUnits() {
+        List<Unit> u = new ArrayList<Unit>();
         if (units.isEmpty() || units == null) {
             return false;
         }
@@ -44,18 +53,24 @@ public class Army {
     }
 
     // Prints all units to screen, ex: Horde.getAllUnits(orcs);
-    public void getAllUnits(List<Unit> units) {
+    public List<Unit> getAllUnits() {
+        List<Unit> u = new ArrayList<Unit>();
         for (int i = 0; i < units.size(); i++) {
             System.out.println(units.get(i) + " ");
         }
+        return u;
     }
 
     // Find random unit in the units-array. Tested and works!
-    public Unit getRandomUnit(List<Unit> units) {
-        Random rand = new Random();
-        int index = rand.nextInt(units.size());
-        Unit randomUnit = units.get(index);
-        return randomUnit;
+    public Unit getRandomUnit() {
+        List<Unit> units = getAllUnits();
+        if(!units.isEmpty()){
+            Random rand = new Random();
+            int index = rand.nextInt(units.size());
+            Unit randomUnit = units.get(index);
+            return randomUnit;
+        }
+        return null;
     }
 
     // FIX THE TOSTRING METHOD ATM ITS PRINTING army.getName()+[[]
