@@ -62,9 +62,6 @@ public class Main {
 
 
 
-
-
-
         // Alive and dead units after battle.
         File file = new File("Orcs.csv");
         File humanFile = new File("Humans.csv");
@@ -75,5 +72,6 @@ public class Main {
         fh.writeUnits(hums,humanFile);
         fh.writeDeadUnits(orcs, deadOrcs);
         fh.writeDeadUnits(hums, deadHumans);
+
         }
 }

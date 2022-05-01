@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Army {
@@ -27,17 +30,17 @@ public class Army {
             addUnit(newUnit.get(i));
         }
     }
+
     // Removes unit from battle.
     public void remove() {
         Iterator<Unit> iter = units.iterator();
-        while(iter.hasNext()){
+        while (iter.hasNext()) {
             Unit unit = iter.next();
-            if(unit.isDead()){
+            if (unit.isDead()) {
                 iter.remove();
             }
         }
     }
-
 
     // Checks if the units-list has any units.
     public boolean hasUnits(List<Unit> units) {
@@ -59,15 +62,15 @@ public class Army {
 
     public static <T> T getRandomUnit(Collection<T> coll) {
         int num = (int) (Math.random() * coll.size());
-        for(T t: coll) if (--num < 0) return t;
+        for (T t : coll) if (--num < 0) return t;
         throw new AssertionError();
     }
 
     // Prints the army with name of army + all the unit objects in the army List.
     public String toString(List<Unit> units) {
         String results = "";
-        for(Unit d : units) {
-            results += d.toString() +", "; //if you implement toString() for Dog then it will be added here
+        for (Unit d : units) {
+            results += d.toString() + ", "; //if you implement toString() for Dog then it will be added here
         }
         return name + " [" + results + "]";
     }
@@ -109,12 +112,11 @@ public class Army {
     }
 
 
-
     // Not required methods.
     // Experimenting with different approaches!
 
     // Finds all dead units after battle. Returns them to a List.
-    public List<Unit> getDeadUnits(List<Unit> units){
+    public List<Unit> getDeadUnits(List<Unit> units) {
         List<Unit> deadUnits = units.stream().filter(unit -> unit.isDead()).collect(Collectors.toList());
         return deadUnits;
     }
@@ -129,16 +131,16 @@ public class Army {
     }
 
     // Returns total army damage
-    public int getArmyDamage(List<Unit> units){
+    public int getArmyDamage(List<Unit> units) {
         int sum = 0;
-        for(Unit unit : units){
+        for (Unit unit : units) {
             sum += unit.getAttack() + unit.getAttackBonus();
         }
         return sum;
     }
 
     // Returns total army armor
-    public int getArmyArmor(List<Unit> units){
+    public int getArmyArmor(List<Unit> units) {
         Integer sum = units.stream().map(u -> u.getArmor()).reduce(0, (a, b) -> a + b);
         return sum;
     }

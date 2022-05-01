@@ -14,11 +14,6 @@ public class FileHandler {
     Scanner scan = new Scanner(System.in);
     List<Army> army;
 
-    /*
-    Do filepath more robust!
-    String altOne = "src" + File.separator + "main" + File.separator + "resources";
-     */
-
     // Writes a list of units to a .csv file.
     public void writeUnits(List<Unit> units, File file) throws IOException {
         if (!file.getName().endsWith(".csv")) {
@@ -26,13 +21,12 @@ public class FileHandler {
         }
         try (FileWriter fileWriter = new FileWriter(file)) {
             String armyName = file.getName().substring(0, file.getName().lastIndexOf("."));
-            fileWriter.write(armyName+"-army"+"\n");
+            fileWriter.write(armyName + "-army" + "\n");
             for (Unit unit : units) {
-                if(unit.getHealth() > 0) { // as required. but not a fan of this
+                if (unit.getHealth() > 0) { // as required. but not a fan of this
                     String line = unit.getClass().getName() + " " + unit.getName() + " " + unit.getHealth();
                     fileWriter.write(line + NEWLINE);
                 }
-
             }
             System.out.println("Units to file completed!"); // According to JavaDoc files are closed in Files.write
         } catch (IOException e) {
@@ -41,6 +35,8 @@ public class FileHandler {
     }
 
     // Reads unit from .csv file.
+    // Unable to fix the army class properly. get error when trying to read file at firstline.
+    // Unable to add the units to the readable file..
     public List<Unit> readUnits(File file) throws IOException {
         if (!file.getName().endsWith(".csv")) {
             throw new IOException("Wrong file format, only filename.csv allowed!");
@@ -65,23 +61,25 @@ public class FileHandler {
                 String name = tokens[1];
                 // Unit unit = new Unit(obj, name, hp);
                 //add.(unit)
+                //
             }
         } catch (IOException e) {
             throw new IOException(("Unable to read unit data from file '" + file.getName() + "':" + e.getMessage()));
         }
         return units;
     }
+
     // Not required, but easier to find all dead units in own .csv file
     public void writeDeadUnits(List<Unit> units, File file) throws IOException {
         if (!file.getName().endsWith(".csv")) {
             throw new IOException("Wrong file format, only filename.csv allowed!");
         }
         try (FileWriter fileWriter = new FileWriter(file)) {
-            fileWriter.write( "✟ RIP ✟"+"\n");
-            for (Unit unit : units) {
-                if(unit.isDead()) {
-                        String line = "✟ " + unit.getClass().getName() + " " + unit.getName() + " " + unit.getHealth();
-                        fileWriter.write(line + NEWLINE);
+            fileWriter.write("✟RIP✟" + "\n");
+            for (Unit unit : units.subList(1, units.size())) {
+                if (unit.isDead()) {
+                    String line = unit.getClass().getName() + " " + unit.getName() + " " + unit.getHealth();
+                    fileWriter.write(line + NEWLINE);
                 }
             }
             System.out.println("Units to file completed!"); // According to JavaDoc files are closed in Files.write
