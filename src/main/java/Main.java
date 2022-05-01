@@ -7,19 +7,28 @@ public class Main {
     public static void main(String[] args) throws IOException {
         FileHandler fh = new FileHandler();
         final String PATH =  "src" + File.separator + "main" + File.separator + "resources";
+
         List<Unit> hums = new ArrayList<Unit>();
         List<Unit> orcs = new ArrayList<Unit>();
         Army Horde = new Army("Orcarmy", orcs);
-        Horde.addUnit(new CavalryUnit("lol",3245));
-        Horde.addUnit(new CavalryUnit("lol",3245));
-        Horde.addUnit(new CavalryUnit("lol",3245));
-        Horde.addUnit(new InfantryUnit("lol",3245));
 
-        System.out.println(Horde.hasUnits());
+        orcs.add(new InfantryUnit("hei",25));
+        orcs.add(new InfantryUnit("asda",25));
+        orcs.add(new InfantryUnit("e232",25));
+        orcs.add(new CavalryUnit("e232",25));
+
+
+        System.out.println(Horde.hasUnits(orcs));
         System.out.println("returning all units");
-        System.out.println(Horde.getAllUnits());
+        System.out.println(Horde.getAllUnits(orcs));
 
-        Horde.getInfantryUnits(orcs);
+
+
+        System.out.println("random unit");
+        System.out.println(Horde.getRandomUnit(orcs));
+
+        System.out.println(Horde.getInfantryUnits(orcs));
+
         System.out.println("end");
 
         /*Horde.getRandomUnit(orcs);
@@ -27,7 +36,7 @@ public class Main {
         System.out.println(Horde.getRandomUnit(orcs));
          */
         System.out.println("Tostring ehre");
-        System.out.println(Horde.toString());
+        System.out.println(Horde.toString(orcs));
 
 
 

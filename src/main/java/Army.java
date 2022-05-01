@@ -1,4 +1,3 @@
-import java.sql.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -18,6 +17,7 @@ public class Army {
     public String getName() {
         return name;
     }
+
 
     public void addUnit(Unit newUnit) {
         units.add(newUnit);
@@ -44,7 +44,7 @@ public class Army {
     }
 
     // Checks if the units-list has any units.
-    public boolean hasUnits() {
+    public boolean hasUnits(List<Unit> units) {
         List<Unit> u = new ArrayList<Unit>();
         if (units.isEmpty() || units == null) {
             return false;
@@ -53,7 +53,7 @@ public class Army {
     }
 
     // Prints all units to screen, ex: Horde.getAllUnits(orcs);
-    public List<Unit> getAllUnits() {
+    public List<Unit> getAllUnits(List<Unit> units) {
         List<Unit> u = new ArrayList<Unit>();
         for (int i = 0; i < units.size(); i++) {
             System.out.println(units.get(i) + " ");
@@ -61,23 +61,16 @@ public class Army {
         return u;
     }
 
-    // Find random unit in the units-array. Tested and works!
-    public Unit getRandomUnit() {
-        List<Unit> units = getAllUnits();
-        if(!units.isEmpty()){
-            Random rand = new Random();
-            int index = rand.nextInt(units.size());
-            Unit randomUnit = units.get(index);
-            return randomUnit;
-        }
-        return null;
+    public static <T> T getRandomUnit(Collection<T> coll) {
+        int num = (int) (Math.random() * coll.size());
+        for(T t: coll) if (--num < 0) return t;
+        throw new AssertionError();
     }
-
-    // FIX THE TOSTRING METHOD ATM ITS PRINTING army.getName()+[[]
-    public String toString() {
-        String results = "+";
+    // Prints the army with name of army + all the unit objects in the army List.
+    public String toString(List<Unit> units) {
+        String results = "";
         for(Unit d : units) {
-            results += d.toString(); //if you implement toString() for Dog then it will be added here
+            results += d.toString() +", "; //if you implement toString() for Dog then it will be added here
         }
         return name + " [" + results + "]";
     }
@@ -95,7 +88,8 @@ public class Army {
 
     // 4 methods to get specific units into a list. In lambda and stream as required.
     // Printed as: XXXX units: [1,2,..,n] -> Returns [] if empty
-    public List<Unit> getInfantryUnits(List<Unit> units) {
+
+    public List<Unit> getInfantryUnits(List<Unit> units) { //List<Unit> units
         List<Unit> infUnits = units.stream().filter(item -> item instanceof InfantryUnit).collect(Collectors.toList());
         System.out.println("Infantry units:");
         return infUnits;
