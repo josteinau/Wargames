@@ -18,7 +18,6 @@ public class Army {
         return name;
     }
 
-
     public void addUnit(Unit newUnit) {
         units.add(newUnit);
     }
@@ -28,20 +27,17 @@ public class Army {
             addUnit(newUnit.get(i));
         }
     }
-
-    // Fix remove function to return new array without deleted obj?
+    // Removes unit from battle.
     public void remove() {
-        List<Unit> newUsers = new ArrayList<Unit>();
-        for (Unit unit : units)
-        {
-            if (unit.isDead())
-            {
-                newUsers.add(unit);
+        Iterator<Unit> iter = units.iterator();
+        while(iter.hasNext()){
+            Unit unit = iter.next();
+            if(unit.isDead()){
+                iter.remove();
             }
         }
-        units = newUsers;
-        System.out.println("Removed");
     }
+
 
     // Checks if the units-list has any units.
     public boolean hasUnits(List<Unit> units) {
@@ -66,6 +62,7 @@ public class Army {
         for(T t: coll) if (--num < 0) return t;
         throw new AssertionError();
     }
+
     // Prints the army with name of army + all the unit objects in the army List.
     public String toString(List<Unit> units) {
         String results = "";
@@ -74,7 +71,6 @@ public class Army {
         }
         return name + " [" + results + "]";
     }
-
 
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -88,7 +84,6 @@ public class Army {
 
     // 4 methods to get specific units into a list. In lambda and stream as required.
     // Printed as: XXXX units: [1,2,..,n] -> Returns [] if empty
-
     public List<Unit> getInfantryUnits(List<Unit> units) { //List<Unit> units
         List<Unit> infUnits = units.stream().filter(item -> item instanceof InfantryUnit).collect(Collectors.toList());
         System.out.println("Infantry units:");
@@ -114,23 +109,42 @@ public class Army {
     }
 
 
-    // Not required methods.
 
-    // Returns the armys total healthpoints.
+    // Not required methods.
+    // Experimenting with different approaches!
+
+    // Finds all dead units after battle. Returns them to a List.
+    public List<Unit> getDeadUnits(List<Unit> units){
+        List<Unit> deadUnits = units.stream().filter(unit -> unit.isDead()).collect(Collectors.toList());
+        return deadUnits;
+    }
+
+    // Returns total army health
     public int getArmyHitpoints(List<Unit> units) {
         int sum = 0;
         for (Unit unit : units) {
             sum += unit.getHealth();
         }
         return sum;
-        //int sumHealthpoints = units.stream().map(s -> s.getHealth()).reduce((a1,a2)a1+a2).get();
     }
-    // get total damage
-    // get total armor
+
+    // Returns total army damage
+    public int getArmyDamage(List<Unit> units){
+        int sum = 0;
+        for(Unit unit : units){
+            sum += unit.getAttack() + unit.getAttackBonus();
+        }
+        return sum;
+    }
+
+    // Returns total army armor
+    public int getArmyArmor(List<Unit> units){
+        Integer sum = units.stream().map(u -> u.getArmor()).reduce(0, (a, b) -> a + b);
+        return sum;
+    }
+
     // get total resbonus etc...
-    // Create default-values in constructors??
+    // Method to calculate which is the favourite in terms of damage/armor/hp
 
     // need to add checks for that the correct unitlist is chosen from correct army.
-
-
 }

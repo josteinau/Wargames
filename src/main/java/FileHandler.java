@@ -17,7 +17,6 @@ public class FileHandler {
     /*
     Do filepath more robust!
     String altOne = "src" + File.separator + "main" + File.separator + "resources";
-    String altTwo = FileSystems.getDefault().getPath("src", "main", "resources").toString();
      */
 
     // Writes a list of units to a .csv file.
@@ -26,10 +25,13 @@ public class FileHandler {
             throw new IOException("Wrong file format, only filename.csv allowed!");
         }
         try (FileWriter fileWriter = new FileWriter(file)) {
-            fileWriter.write( "FIKSE THIS.ARMY"+"\n");
+            String armyName = file.getName().substring(0, file.getName().lastIndexOf("."));
+            fileWriter.write(armyName+"-army"+"\n");
             for (Unit unit : units) {
-                String line = unit.getClass().getName() + " " + unit.getName() + " " + unit.getHealth();
-                fileWriter.write(line + NEWLINE);
+                if(unit.getHealth() > 0) { // as required. but not a fan of this
+                    String line = unit.getClass().getName() + " " + unit.getName() + " " + unit.getHealth();
+                    fileWriter.write(line + NEWLINE);
+                }
 
             }
             System.out.println("Units to file completed!"); // According to JavaDoc files are closed in Files.write
@@ -69,8 +71,26 @@ public class FileHandler {
         }
         return units;
     }
+    // Not required, but easier to find all dead units in own .csv file
+    public void writeDeadUnits(List<Unit> units, File file) throws IOException {
+        if (!file.getName().endsWith(".csv")) {
+            throw new IOException("Wrong file format, only filename.csv allowed!");
+        }
+        try (FileWriter fileWriter = new FileWriter(file)) {
+            fileWriter.write( "✟ RIP ✟"+"\n");
+            for (Unit unit : units) {
+                if(unit.isDead()) {
+                        String line = "✟ " + unit.getClass().getName() + " " + unit.getName() + " " + unit.getHealth();
+                        fileWriter.write(line + NEWLINE);
+                }
+            }
+            System.out.println("Units to file completed!"); // According to JavaDoc files are closed in Files.write
+        } catch (IOException e) {
+            throw new IOException("unable to write unit file: " + e.getMessage());
+        }
+    }
 
-    // Simple write to file method. Not 100% yet. Gonna use BUFFEREDREADER
+    // Simple write to file method. Not 100% yet. Gonna use BUFFEREDREADER!  -> Method not needed for now.
     public void writeToFile(File file) {
         Scanner scan = new Scanner(System.in);
         FileWriter fileWriter = null;

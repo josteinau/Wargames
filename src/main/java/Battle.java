@@ -4,7 +4,8 @@ import java.util.List;
 
 public class Battle {
     private List<Army> armyOne;
-    private List<Army> armyTwo;
+    private List<Army> armyTwo = new ArrayList<>();
+
 
     public Battle(){
         this.armyOne = new ArrayList<>();
@@ -13,7 +14,6 @@ public class Battle {
     public void armyBattle(List<Army> armyOne, List<Army> armyTwo){
 
     }
-
     // getAllUnits().attack().getAllUnits() etc
     // Alternate attacks getRandomUnit(); in for loop untill army.size() is done.
 }
