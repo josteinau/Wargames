@@ -17,8 +17,7 @@ public class RangedUnit extends Unit {
     }
 
     @Override
-    public int getResistBonus() { // Feil men fikser senere.
-        int numatk = 0;
+    public int getResistBonus() {
         int bonusDamage = 0;
         for (int numOfAttacks = 1; numOfAttacks < 15; numOfAttacks++) {
             if (numOfAttacks == 1) {

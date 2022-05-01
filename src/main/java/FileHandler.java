@@ -10,6 +10,7 @@ They are given in the following format:
 Unit-type Unit-name(x) Unit-health. x represents a letter that indicates which type of unit.
  */
 public class FileHandler {
+    final String PATH =  "src" + File.separator + "main" + File.separator + "resources";
     private static final String NEWLINE = "\n";
     Scanner scan = new Scanner(System.in);
     List<Army> army;
@@ -34,9 +35,10 @@ public class FileHandler {
         }
     }
 
+
     // Reads unit from .csv file.
     // Unable to fix the army class properly. get error when trying to read file at firstline.
-    // Unable to add the units to the readable file..
+    // Unable to add the units to the readable file.
     public List<Unit> readUnits(File file) throws IOException {
         if (!file.getName().endsWith(".csv")) {
             throw new IOException("Wrong file format, only filename.csv allowed!");
@@ -74,15 +76,15 @@ public class FileHandler {
         if (!file.getName().endsWith(".csv")) {
             throw new IOException("Wrong file format, only filename.csv allowed!");
         }
-        try (FileWriter fileWriter = new FileWriter(file)) {
-            fileWriter.write("✟RIP✟" + "\n");
-            for (Unit unit : units.subList(1, units.size())) {
+        try (FileWriter fileWriter2 = new FileWriter(file)) {
+            fileWriter2.write("✟RIP✟" + "\n");
+            for (Unit unit : units) {
                 if (unit.isDead()) {
                     String line = unit.getClass().getName() + " " + unit.getName() + " " + unit.getHealth();
-                    fileWriter.write(line + NEWLINE);
+                    fileWriter2.write(line + NEWLINE);
                 }
             }
-            System.out.println("Units to file completed!"); // According to JavaDoc files are closed in Files.write
+            System.out.println("Dead units to file completed!");
         } catch (IOException e) {
             throw new IOException("unable to write unit file: " + e.getMessage());
         }

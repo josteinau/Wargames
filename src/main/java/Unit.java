@@ -24,18 +24,20 @@ public abstract class Unit implements Serializable {
     // Attacking method which returns opponents health after being attacked.
     // Using println alot because its easier to keep track of battle.
     public void attack(Unit opponent) {
-        int hit = this.attack + this.getAttackBonus(); // Total attack damage
-        int defence = opponent.getArmor() + opponent.getResistBonus(); // opponent defence
-        if (hit >= opponent.health + defence) { // 0 hp
-            System.out.println(this.name + " attacks " + opponent.name + " for " + hit + " damage.");
-            System.out.println(opponent.name + " died");
-            opponent.health = 0;
-        } else {
-            int newHealth = (opponent.health + opponent.getArmor()) - hit; // Defender/opponent hp after attack. !!!! INCLUDING ARMOR 'AS' HP
-            System.out.println(this.name + " attacks " + opponent.name + " for " + hit + " damage." +
-                    "\nRemaining life for " + opponent.name + " equals " + newHealth);
-            opponent.setHealth(newHealth);
-            numberOfAttacks++;
+        if(!opponent.isDead()) {
+            int hit = this.attack + this.getAttackBonus(); // Total attack damage
+            int defence = opponent.getArmor() + opponent.getResistBonus(); // opponent defence
+            if (hit >= opponent.health + defence) { // 0 hp
+                System.out.println(this.name + " attacks " + opponent.name + " for " + hit + " damage.");
+                System.out.println(opponent.name + " died");
+                opponent.health = 0;
+            } else {
+                int newHealth = (opponent.health + opponent.getArmor()) - hit; // Defender/opponent hp after attack. !!!! INCLUDING ARMOR 'AS' HP
+                System.out.println(this.name + " attacks " + opponent.name + " for " + hit + " damage." +
+                        "\nRemaining life for " + opponent.name + " equals " + newHealth);
+                opponent.setHealth(newHealth);
+                numberOfAttacks++;
+            }
         }
     }
 
@@ -96,9 +98,8 @@ public abstract class Unit implements Serializable {
      */
 
     public boolean isDead() {
-        if (health <= 0) {
-            return true;
-        } else {
+        if (health <= 0) return true;
+        else {
             return false;
         }
     }

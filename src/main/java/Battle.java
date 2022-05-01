@@ -15,5 +15,5 @@ public class Battle {
 
     }
     // getAllUnits().attack().getAllUnits() etc
-    // Alternate attacks getRandomUnit(); in for loop untill army.size() is done.
+    // Alternate attacks getRandomUnit(); in for loop until army.size() is 0 or army.getTotalHealth <= 0.
 }

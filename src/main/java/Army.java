@@ -1,7 +1,5 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 public class Army {
@@ -32,7 +30,7 @@ public class Army {
     }
 
     // Removes unit from battle.
-    public void remove() {
+    public void remove(List<Unit> units) {
         Iterator<Unit> iter = units.iterator();
         while (iter.hasNext()) {
             Unit unit = iter.next();
@@ -60,11 +58,31 @@ public class Army {
         return u;
     }
 
+    // Optional to getRandomElement
     public static <T> T getRandomUnit(Collection<T> coll) {
         int num = (int) (Math.random() * coll.size());
         for (T t : coll) if (--num < 0) return t;
         throw new AssertionError();
     }
+
+/* Optional to getRandomUnit
+    public static <E> E getRandomElement(Collection<E> collection) {
+        if (collection.isEmpty())
+            return null;
+        int randomIndex = ThreadLocalRandom.current().nextInt(collection.size());
+        if (collection instanceof RandomAccess) {
+            List<E> list = (List<E>) collection;
+            return list.get(randomIndex);
+        } else {
+            for (E element : collection) {
+                if (randomIndex == 0)
+                    return element;
+                randomIndex--;
+            }
+            return null;
+        }
+    }
+    */
 
     // Prints the army with name of army + all the unit objects in the army List.
     public String toString(List<Unit> units) {
