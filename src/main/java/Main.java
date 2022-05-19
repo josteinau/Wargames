@@ -17,8 +17,8 @@ public class Main {
         File deadOrcs = new File("deadOrcs.csv");
         File deadHumans = new File("deadHumans.csv");
 
-        Army Horde = new Army("Orcarmy", orcs);
-        Army Humans = new Army("Human army", hums);
+        Army Horde = new Army("Orcarmy");
+        Army Humans = new Army("Human army");
 
         // Adding premade army
         hums.add(new CommanderUnit("Arthas", 100));
@@ -41,12 +41,12 @@ public class Main {
             Unit p = uf.createUnit(type);
             orcs.add(p);
         }
-        System.out.println("HUMANS");
+        System.out.println(Horde.getName());
         System.out.println(hums);
         Thread.sleep(2000);
         System.out.println("VS");
         Thread.sleep(2000);
-        System.out.println("ORCS");
+        System.out.println(Humans.getName());
         System.out.println(orcs);
         Thread.sleep(2000);
 

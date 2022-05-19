@@ -3,20 +3,21 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 public class Army {
-    String name;
+    String armyName;
     List<Unit> units;
 
     public Army(String name) {
-        this.name = name;
+        this.armyName = name;
+        this.units = new ArrayList<>();
     }
 
-    public Army(String name, List<Unit> units) {
-        this.name = name;
-        this.units = new ArrayList<Unit>();
+    public Army(String name, ArrayList<Unit> unit) {
+        this.armyName = name;
+        this.units = unit;
     }
 
     public String getName() {
-        return name;
+        return armyName;
     }
 
     public void addUnit(Unit newUnit) {
@@ -65,32 +66,15 @@ public class Army {
         throw new AssertionError();
     }
 
-/* Optional to getRandomUnit
-    public static <E> E getRandomElement(Collection<E> collection) {
-        if (collection.isEmpty())
-            return null;
-        int randomIndex = ThreadLocalRandom.current().nextInt(collection.size());
-        if (collection instanceof RandomAccess) {
-            List<E> list = (List<E>) collection;
-            return list.get(randomIndex);
-        } else {
-            for (E element : collection) {
-                if (randomIndex == 0)
-                    return element;
-                randomIndex--;
-            }
-            return null;
-        }
-    }
-    */
-
-    // Prints the army with name of army + all the unit objects in the army List.
+    /**
+     *Prints the army with name of army + all the unit objects in the army List.
+     */
     public String toString(List<Unit> units) {
         String results = "";
         for (Unit d : units) {
             results += d.toString() + ", "; //if you implement toString() for Dog then it will be added here
         }
-        return name + " [" + results + "]";
+        return armyName + " [" + results + "]";
     }
 
     public boolean equals(Object obj) {
@@ -100,7 +84,7 @@ public class Army {
             return false;
         }
         Army otherArmy = (Army) obj;
-        return this.name.equals(otherArmy.name);
+        return this.armyName.equals(otherArmy.armyName);
     }
 
     // 4 methods to get specific units into a list. In lambda and stream as required.
