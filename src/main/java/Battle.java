@@ -3,15 +3,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Battle {
-    private List<Army> armyOne;
-    private List<Army> armyTwo = new ArrayList<>();
+    private Army armyOne;
+    private Army armyTwo;
 
 
-    public Battle(){
-        this.armyOne = new ArrayList<>();
-        this.armyTwo = new ArrayList<>();
+    public Battle(Army armyOne, Army armytwo){
+        this.armyOne = armyOne;
+        this.armyTwo = armyTwo;
     }
-    public void armyBattle(List<Army> armyOne, List<Army> armyTwo){
+    public String simulate(){
+        while(armyOne.hasUnits() && armyTwo.hasUnits()){
+            System.out.println("hasunits");
+
+        }
+        return "lol";
 
     }
     // getAllUnits().attack().getAllUnits() etc

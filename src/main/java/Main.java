@@ -20,15 +20,28 @@ public class Main {
         Army Horde = new Army("Orcarmy");
         Army Humans = new Army("Human army");
 
-        // Adding premade army
         hums.add(new CommanderUnit("Arthas", 100));
         hums.add(new InfantryUnit("Erik", 25));
         hums.add(new InfantryUnit("Per", 25));
 
+        // Adding premade army
         orcs.add(new CommanderUnit("Thrall", 150));
         orcs.add(new InfantryUnit("Grom", 40));
         orcs.add(new InfantryUnit("Khal", 25));
         orcs.add(new RangedUnit("Gork", 25));
+
+        Battle bt = new Battle(Horde,Humans);
+        bt.simulate();
+
+
+
+        Thread.sleep(2000);
+        System.out.println("Flase");
+        System.out.println(Humans.hasUnits());
+        System.out.println("has");
+        System.out.println(!Humans.hasUnits());
+
+
 
 
         // testing the factory by adding units to the orcs
@@ -38,7 +51,7 @@ public class Main {
         System.out.print("Enter the number of units to be added: \n");
         int units = Integer.parseInt(br.readLine());
         for (int i = 0; i < units; i++) {
-            Unit p = uf.createUnit(type);
+            // Unit p = uf.createUnit(type, name, health);
             orcs.add(p);
         }
         System.out.println(Horde.getName());
@@ -56,9 +69,9 @@ public class Main {
         System.out.println("Starting hitpoints for Humans: " + Humans.getArmyHitpoints(hums));
         Thread.sleep(5000);
 
-        while (Horde.getArmyHitpoints(orcs) > 0 && Horde.hasUnits(orcs) ||
-                Humans.getArmyHitpoints(hums) > 0 && Humans.hasUnits(hums)) {
-            if ((Horde.hasUnits(orcs) || Humans.hasUnits(hums))) {
+        while (Horde.getArmyHitpoints(orcs) > 0 && Horde.hasUnits() ||
+                Humans.getArmyHitpoints(hums) > 0 && Humans.hasUnits()) {
+            if ((Horde.hasUnits() || Humans.hasUnits())) {
 
                 // each iteration check if any unit is dead, and remove them from battle.
                 Army.getRandomUnit(orcs).attack(Army.getRandomUnit(hums));

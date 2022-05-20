@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/* The FileHandler makes it possible to write and read Units to and from a file.
-They are given in the following format:
-Unit-type Unit-name(x) Unit-health. x represents a letter that indicates which type of unit.
+/**The FileHandler makes it possible to write and read Units to and from a file.
+ They are given in the following format:
+ Unit-type Unit-name(x) Unit-health. x represents a letter that indicates which type of unit.
+ *
+ *
  */
 public class FileHandler {
     final String PATH =  "src" + File.separator + "main" + File.separator + "resources";

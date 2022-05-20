@@ -10,3 +10,16 @@
 [] Fjern println - logging framework
 
 
+Ideer:
+
+    // Ideas:
+    /* public String generateRandomName(String randomName){
+    if(orc){
+    array[randomOrcNames]
+    if(human){
+    array[otherRandomNames]
+    return randomName
+     */
+    /*
+    Reduce armor for each hit, armor gets more and more broken. If not the commander-units are OP!
+     */

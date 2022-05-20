@@ -6,7 +6,9 @@ public class Army {
     String armyName;
     List<Unit> units;
 
-    public Army(String name) {
+    public Army(String name) throws IllegalArgumentException {
+        if(name.isBlank()) throw new IllegalArgumentException("Army-name cannot be null");
+        if(name.contains(",") || name.contains(".")) throw new IllegalArgumentException("Army-name cannot contain , or .");
         this.armyName = name;
         this.units = new ArrayList<>();
     }
@@ -41,16 +43,15 @@ public class Army {
         }
     }
 
-    // Checks if the units-list has any units.
-    public boolean hasUnits(List<Unit> units) {
-        List<Unit> u = new ArrayList<Unit>();
-        if (units.isEmpty() || units == null) {
+    // Checks if the units-list has any units. fjernet list List<Unit> units i arg
+    public boolean hasUnits() {
+        if ((units.isEmpty() || units == null)) {
             return false;
         }
         return true;
     }
 
-    // Prints all units to screen, ex: Horde.getAllUnits(orcs);
+    // Prints all units to screen, ex: Horde.getAllUnits(orcs); List<Unit> units
     public List<Unit> getAllUnits(List<Unit> units) {
         List<Unit> u = new ArrayList<Unit>();
         for (int i = 0; i < units.size(); i++) {
