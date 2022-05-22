@@ -20,10 +20,6 @@ public class Main {
         File orcFile = new File("Orcs.csv");
         File humanFile = new File("Humans.csv");
 
-
-        Army Horde = new Army("Orcarmy");
-        Army Humans = new Army("Human army");
-
         Army testOrc = new Army("Horde",orcs);
         Army testHums = new Army("Humans",hums);
 
@@ -41,9 +37,6 @@ public class Main {
 
         Battle bts = new Battle(testOrc,testHums,Terrain.FOREST);
 
-        Thread.sleep(144);
-
-        bts.simulate();
 
         fh.writeUnits(orcs, orcFile);
         fh.writeUnits(hums, humanFile);

@@ -1,8 +1,8 @@
 [] Surefire-plugin for mvn test
 [X][] Factory pattern unit-factory. - ikke testet!
-[] Unntakshåndtering - Alert istede for println?
+[X] Unntakshåndtering - Alert istede for println?
 [X][X][] Mangler Javadoc til klasser - design pattern - fixet for noen
-[] Les fra fil fix
+[X] Les fra fil fix
 [] GUI
 [] units.Unit-testing av alle klasser
 [X] Terreng klasse

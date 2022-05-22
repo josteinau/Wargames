@@ -99,3 +99,9 @@ Animal = superclass
         fh.writeDeadUnits(hums, deadHumans);
     }
 }
+
+        // Unit factory tests. Working!!
+        uf.createManyUnits(10,UnitType.COMMANDER_UNIT,"Legolas",100);
+        orcs.add(uf.createUnit(UnitType.CAVALRY_UNIT, "ODDVAR",25));
+        orcs.addAll(uf.createManyUnits(10,UnitType.COMMANDER_UNIT,"Legolas",100));
+        System.out.println(orcs);

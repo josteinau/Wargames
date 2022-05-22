@@ -23,8 +23,8 @@ public class Battle {
     /**
      * Constructor for a battle between two armies with a given terrain-type.
      *
-     * @param armyOne consists of different unit types
-     * @param armyTwo consists of different unit types
+     * @param armyOne     consists of different unit types
+     * @param armyTwo     consists of different unit types
      * @param terrainType enum terrain-type
      */
     public Battle(Army armyOne, Army armyTwo, Terrain terrainType) {
@@ -43,6 +43,7 @@ public class Battle {
      * This is a method that simulates a battle between two armies. armyOne starts the battle by choosing a random unit from armyTwo
      * to attack a random unit from armyTwo. If a unit dies, it is added to a .csv file with current attributes and removed from the battle.
      * The battle continues until one of the armies is destroyed! Winner is announced by a println.
+     *
      * @return a print-line of the winning army
      * @throws InterruptedException
      * @throws IOException
@@ -80,15 +81,15 @@ public class Battle {
 
             return armyTwo;
         }
-
     }
 
     /**
      * A simple toString method
+     *
      * @return armyOne vs armyTwo
      */
     @Override
     public String toString() {
-        return "Battle:\n"+ armyOne + " VS " + armyTwo;
+        return "Battle:\n" + armyOne + " VS " + armyTwo;
     }
 }

@@ -2,7 +2,10 @@ package Battle;
 
 import units.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
@@ -14,18 +17,21 @@ public class Army {
 
     /**
      * Checks if army-name is valid!
+     *
      * @param name of the army
      * @throws IllegalArgumentException if the army is null or uses , or .
      */
     public Army(String name) throws IllegalArgumentException {
-        if(name.isBlank()) throw new IllegalArgumentException("Battle.Army-name cannot be null");
-        if(name.contains(",") || name.contains(".")) throw new IllegalArgumentException("Battle.Army-name cannot contain , or .");
+        if (name.isBlank()) throw new IllegalArgumentException("Battle.Army-name cannot be null");
+        if (name.contains(",") || name.contains("."))
+            throw new IllegalArgumentException("Battle.Army-name cannot contain , or .");
         this.armyName = name;
         this.units = new ArrayList<>();
     }
 
     /**
      * Constructor for the army
+     *
      * @param name name of the army
      * @param unit list of different units
      */
@@ -36,6 +42,7 @@ public class Army {
 
     /**
      * method to get the name of the army.
+     *
      * @return the army-name
      */
     public String getName() {
@@ -44,6 +51,7 @@ public class Army {
 
     /**
      * Method to add a unit to units-list in army.
+     *
      * @param newUnit the new unit added.
      */
     public void addUnit(Unit newUnit) {
@@ -52,6 +60,7 @@ public class Army {
 
     /**
      * Method to add all new units
+     *
      * @param newUnit list of new units.
      */
     public void addAll(List<Unit> newUnit) {
@@ -62,6 +71,7 @@ public class Army {
 
     /**
      * Method to remove a unit from army, used to remove units from battle.
+     *
      * @param removeUnit the unit removed.
      */
     public void remove(Unit removeUnit) {
@@ -76,6 +86,7 @@ public class Army {
 
     /**
      * Method to check if the army has any units
+     *
      * @return false if its empty or null, return true if else.
      */
     public boolean hasUnits() {
@@ -87,6 +98,7 @@ public class Army {
 
     /**
      * method to get all units of army
+     *
      * @return list of units
      */
     public List<Unit> getAllUnits() {
@@ -95,9 +107,10 @@ public class Army {
 
     /**
      * Method to find a random unit in the army.
+     *
      * @return a random index(unit) from the list.
      */
-    public Unit getRandomUnit(){
+    public Unit getRandomUnit() {
         Random rand = new Random();
         int randomIndex = rand.nextInt(units.size());
         return units.get(randomIndex);
@@ -105,6 +118,7 @@ public class Army {
 
     /**
      * A method to print the whole army to screen
+     *
      * @param units list of units in the army
      * @return army with name of army + all the unit objects in the army List.
      */
@@ -118,6 +132,7 @@ public class Army {
 
     /**
      * A method to check if a object is equal to another object
+     *
      * @param obj
      * @return true if equal, false if not equal.
      */
@@ -133,6 +148,7 @@ public class Army {
 
     /**
      * A method to get all the infantry units of a units list.
+     *
      * @param units list of different unit types.
      * @return infantry units of wanted list, [] if empty
      */
@@ -144,6 +160,7 @@ public class Army {
 
     /**
      * A method to get all the cavalry units of a units list.
+     *
      * @param units list of different unit types.
      * @return cavalry units of wanted list, [] if empty
      */
@@ -155,6 +172,7 @@ public class Army {
 
     /**
      * A method to get all the ranged units of a units list.
+     *
      * @param units list of different unit types.
      * @return ranged units of wanted list, [] if empty
      */
@@ -166,6 +184,7 @@ public class Army {
 
     /**
      * A method to get all the commander units of a units list.
+     *
      * @param units list of different unit types.
      * @return commander units of wanted list, [] if empty
      */
@@ -177,6 +196,7 @@ public class Army {
 
     /**
      * A method to get all the dead units of a units-list
+     *
      * @param units list you want to check
      * @return a list of dead units
      */
@@ -187,6 +207,7 @@ public class Army {
 
     /**
      * A method to get an army's total health point at any point. Easier to see who is the favourite in terms of hp before or under the battle.
+     *
      * @param units list of different unit types
      * @return integer of total army-health.
      */
@@ -200,6 +221,7 @@ public class Army {
 
     /**
      * A method to get an army's total damage at any point. May be easier indicate who is the favourite to win the fight.
+     *
      * @param units list of different unit types
      * @return integer value with army total damage.
      */
@@ -213,6 +235,7 @@ public class Army {
 
     /**
      * A method to get an army's total armor at any point. May be easier indicate who is the favourite to win the fight.
+     *
      * @param units list of different unit types
      * @return integer value with army total armor.
      */

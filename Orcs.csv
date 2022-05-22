@@ -1,2 +1,16 @@
 Orcs-army
-CommanderUnit Thrall(*) 85
+CommanderUnit Thrall(*) 150
+InfantryUnit Grom(I) 40
+InfantryUnit Khal(I) 25
+RangedUnit Gork(R) 25
+CavalryUnit ODDVAR(C) 25
+CommanderUnit Legolas(*) 100
+CommanderUnit Legolas(*) 100
+CommanderUnit Legolas(*) 100
+CommanderUnit Legolas(*) 100
+CommanderUnit Legolas(*) 100
+CommanderUnit Legolas(*) 100
+CommanderUnit Legolas(*) 100
+CommanderUnit Legolas(*) 100
+CommanderUnit Legolas(*) 100
+CommanderUnit Legolas(*) 100
