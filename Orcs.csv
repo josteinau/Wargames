@@ -1,5 +1,2 @@
 Orcs-army
-units.CommanderUnit Thrall(*) 150
-units.InfantryUnit Grom(I) 40
-units.InfantryUnit Khal(I) 25
-units.RangedUnit Gork(R) 25
+CommanderUnit Thrall(*) 85

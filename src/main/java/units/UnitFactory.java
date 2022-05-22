@@ -3,13 +3,16 @@ package units;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  This is a factory of creating units.
+ */
 public class UnitFactory {
 
     /**
      * Method to create units based on unit-type, give them a name and health!
      * @param type of unit you want to create
      * @param name your unit!
-     * @param health amout of the unit you want to create.
+     * @param health amount of the unit you want to create.
      * @return a new unit of your chosen type, name and health!
      * @throws IllegalArgumentException if somehow you chose a unit type that does not exist!
      */
@@ -20,11 +23,11 @@ public class UnitFactory {
             case CAVALRY_UNIT:
                 return new CavalryUnit(name, health);
             case INFANTRY_UNIT:
-                return new InfantryUnit("StandardInfantryUnit", 25);
+                return new InfantryUnit(name, health);
             case RANGED_UNIT:
-                return new RangedUnit("StandardRange", 25);
+                return new RangedUnit(name, health);
             case COMMANDER_UNIT:
-                return new CommanderUnit("StandardCommander", 100);
+                return new CommanderUnit(name, health);
             default:
                 throw new IllegalArgumentException("Unknown unit-type: " + type);
         }
@@ -46,7 +49,7 @@ public class UnitFactory {
                 factoryUnits.add(createUnit(unitType, name, health));
             }
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException ("units.Unit type does not exist, giving error: " + e);
+            throw new IllegalArgumentException ("Unit type does not exist, giving error: " + e);
         }
         return factoryUnits;
     }

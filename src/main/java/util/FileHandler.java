@@ -10,44 +10,43 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**The util.FileHandler makes it possible to write and read Units to and from a file.
- They are given in the following format:
- units.Unit-type units.Unit-name(x) units.Unit-health. x represents a letter that indicates which type of unit.
- *
- *
- */
+/** The FileHandler makes it possible to write and read Units to and from a file.
+  * They are given in the following format:
+  * Unit-type Unit-name(x) Unit-health. x represents a letter that indicates which type of unit.
+  *
+  */
 public class FileHandler {
     final String PATH =  "src" + File.separator + "main" + File.separator + "resources";
     private static final String NEWLINE = "\n";
-    Scanner scan = new Scanner(System.in);
-    List<Army> army;
-
-    // Writes a list of units to a .csv file.
+    /**
+     * This method writes units to a file, with Army-name followed by every unit-type, unit-name and current health.
+     * @param units the list you want to write to the file
+     * @param file the file you want to write to
+     * @throws IOException
+     */
     public void writeUnits(List<Unit> units, File file) throws IOException {
         if (!file.getName().endsWith(".csv")) {
             throw new IOException("Wrong file format, only filename.csv allowed!");
         }
         try (FileWriter fileWriter = new FileWriter(file)) {
             String armyName = file.getName().substring(0, file.getName().lastIndexOf("."));
-            fileWriter.write(armyName + "-army" + "\n");
+            fileWriter.write(armyName + "-army" + NEWLINE);
             for (Unit unit : units) {
                 if (unit.getHealth() > 0) { // as required. but not a fan of this
-                    String line = unit.getClass().getName() + " " + unit.getName() + " " + unit.getHealth();
+                    String line = unit.getClass().getName().substring(6) + " " + unit.getName() + " " + unit.getHealth();
                     fileWriter.write(line + NEWLINE);
                 }
             }
-            System.out.println("Units to file completed!"); // According to JavaDoc files are closed in Files.write
+            System.out.println("Alive units to file completed!"); // According to JavaDoc files are closed in Files.write
         } catch (IOException e) {
             throw new IOException("unable to write unit file: " + e.getMessage());
         }
     }
 
     /**
-     *  Reads unit from .csv file.
-     * Unable to fix the army class properly. get error when trying to read file at firstline.
-     * Unable to add the units to the readable file.
-     * @param file
-     * @return
+     *  Reads wanted file with a list of units written in writeUnits method
+     * @param file you want to read from
+     * @return a list of units
      * @throws IOException
      */
     public List<Unit> readUnits(File file) throws IOException {
@@ -73,8 +72,8 @@ public class FileHandler {
 
     /**
      * Not required, but easier to find all dead units in own .csv file
-     * @param units
-     * @param file
+     * @param units list of all the dead units
+     * @param file a file made for dead units only.
      * @throws IOException
      */
     public void writeDeadUnits(List<Unit> units, File file) throws IOException {
@@ -85,36 +84,13 @@ public class FileHandler {
             fileWriter2.write("✟RIP✟" + "\n");
             for (Unit unit : units) {
                 if (unit.isDead()) {
-                    String line = unit.getClass().getName() + " " + unit.getName() + " " + unit.getHealth();
+                    String line = unit.getClass().getName().substring(6) + " " + unit.getName() + " " + unit.getHealth();
                     fileWriter2.write(line + NEWLINE);
                 }
             }
             System.out.println("Dead units to file completed!");
         } catch (IOException e) {
             throw new IOException("unable to write unit file: " + e.getMessage());
-        }
-    }
-
-    // Simple write to file method. Not 100% yet. Gonna use BUFFEREDREADER!  -> Method not needed for now.
-    public void writeToFile(File file) {
-        Scanner scan = new Scanner(System.in);
-        FileWriter fileWriter = null;
-        try {
-            // Add BUFFEREDREADER here.
-            fileWriter = new FileWriter(file);
-            String input = scan.nextLine();
-            fileWriter.write(input);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (fileWriter != null) {
-                    scan.close();
-                    fileWriter.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 }

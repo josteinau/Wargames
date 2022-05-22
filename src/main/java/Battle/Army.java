@@ -5,11 +5,18 @@ import units.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * This class represents an army. The army has a name and has a List of different unit-types.
+ */
 public class Army {
     String armyName;
-    List<Unit> units;
-    Terrain terrain;
+    private List<Unit> units;
 
+    /**
+     * Checks if army-name is valid!
+     * @param name of the army
+     * @throws IllegalArgumentException if the army is null or uses , or .
+     */
     public Army(String name) throws IllegalArgumentException {
         if(name.isBlank()) throw new IllegalArgumentException("Battle.Army-name cannot be null");
         if(name.contains(",") || name.contains(".")) throw new IllegalArgumentException("Battle.Army-name cannot contain , or .");
@@ -17,27 +24,47 @@ public class Army {
         this.units = new ArrayList<>();
     }
 
-    public Army(String name, ArrayList<Unit> unit) {
+    /**
+     * Constructor for the army
+     * @param name name of the army
+     * @param unit list of different units
+     */
+    public Army(String name, List<Unit> unit) {
         this.armyName = name;
         this.units = unit;
     }
 
+    /**
+     * method to get the name of the army.
+     * @return the army-name
+     */
     public String getName() {
         return armyName;
     }
 
+    /**
+     * Method to add a unit to units-list in army.
+     * @param newUnit the new unit added.
+     */
     public void addUnit(Unit newUnit) {
         units.add(newUnit);
     }
 
+    /**
+     * Method to add all new units
+     * @param newUnit list of new units.
+     */
     public void addAll(List<Unit> newUnit) {
         for (int i = 0; i < units.size(); i++) {
             addUnit(newUnit.get(i));
         }
     }
 
-    // Removes unit from battle.
-    public void remove(List<Unit> units) {
+    /**
+     * Method to remove a unit from army, used to remove units from battle.
+     * @param removeUnit the unit removed.
+     */
+    public void remove(Unit removeUnit) {
         Iterator<Unit> iter = units.iterator();
         while (iter.hasNext()) {
             Unit unit = iter.next();
@@ -47,7 +74,10 @@ public class Army {
         }
     }
 
-    // Checks if the units-list has any units. fjernet list List<units.Unit> units i arg
+    /**
+     * Method to check if the army has any units
+     * @return false if its empty or null, return true if else.
+     */
     public boolean hasUnits() {
         if ((units.isEmpty() || units == null)) {
             return false;
@@ -55,24 +85,28 @@ public class Army {
         return true;
     }
 
-    // Prints all units to screen, ex: Horde.getAllUnits(orcs); List<units.Unit> units
-    public List<Unit> getAllUnits(List<Unit> units) {
-        List<Unit> u = new ArrayList<Unit>();
-        for (int i = 0; i < units.size(); i++) {
-            System.out.println(units.get(i) + " ");
-        }
-        return u;
-    }
-
-    // Optional to getRandomElement
-    public static <T> T getRandomUnit(Collection<T> coll) {
-        int num = (int) (Math.random() * coll.size());
-        for (T t : coll) if (--num < 0) return t;
-        throw new AssertionError();
+    /**
+     * method to get all units of army
+     * @return list of units
+     */
+    public List<Unit> getAllUnits() {
+        return units;
     }
 
     /**
-     *Prints the army with name of army + all the unit objects in the army List.
+     * Method to find a random unit in the army.
+     * @return a random index(unit) from the list.
+     */
+    public Unit getRandomUnit(){
+        Random rand = new Random();
+        int randomIndex = rand.nextInt(units.size());
+        return units.get(randomIndex);
+    }
+
+    /**
+     * A method to print the whole army to screen
+     * @param units list of units in the army
+     * @return army with name of army + all the unit objects in the army List.
      */
     public String toString(List<Unit> units) {
         String results = "";
@@ -82,6 +116,11 @@ public class Army {
         return armyName + " [" + results + "]";
     }
 
+    /**
+     * A method to check if a object is equal to another object
+     * @param obj
+     * @return true if equal, false if not equal.
+     */
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -92,43 +131,65 @@ public class Army {
         return this.armyName.equals(otherArmy.armyName);
     }
 
-    // 4 methods to get specific units into a list. In lambda and stream as required.
-    // Printed as: XXXX units: [1,2,..,n] -> Returns [] if empty
-    public List<Unit> getInfantryUnits(List<Unit> units) { //List<units.Unit> units
+    /**
+     * A method to get all the infantry units of a units list.
+     * @param units list of different unit types.
+     * @return infantry units of wanted list, [] if empty
+     */
+    public List<Unit> getInfantryUnits(List<Unit> units) {
         List<Unit> infUnits = units.stream().filter(item -> item instanceof InfantryUnit).collect(Collectors.toList());
         System.out.println("Infantry units:");
         return infUnits;
     }
 
+    /**
+     * A method to get all the cavalry units of a units list.
+     * @param units list of different unit types.
+     * @return cavalry units of wanted list, [] if empty
+     */
     public List<Unit> getCavalryUnits(List<Unit> units) {
         List<Unit> cavUnits = units.stream().filter(item -> item instanceof CavalryUnit).collect(Collectors.toList());
         System.out.println("Cavalry units:");
         return cavUnits;
     }
 
+    /**
+     * A method to get all the ranged units of a units list.
+     * @param units list of different unit types.
+     * @return ranged units of wanted list, [] if empty
+     */
     public List<Unit> getRangedUnits(List<Unit> units) {
         List<Unit> ranUnits = units.stream().filter(item -> item instanceof RangedUnit).collect(Collectors.toList());
         System.out.println("Ranged units:");
         return ranUnits;
     }
 
+    /**
+     * A method to get all the commander units of a units list.
+     * @param units list of different unit types.
+     * @return commander units of wanted list, [] if empty
+     */
     public List<Unit> getCommanderUnits(List<Unit> units) {
         List<Unit> comUnits = units.stream().filter(item -> item instanceof CommanderUnit).collect(Collectors.toList());
         System.out.println("Commander units:");
         return comUnits;
     }
 
-
-    // Not required methods.
-    // Experimenting with different approaches!
-
-    // Finds all dead units after battle. Returns them to a List.
+    /**
+     * A method to get all the dead units of a units-list
+     * @param units list you want to check
+     * @return a list of dead units
+     */
     public List<Unit> getDeadUnits(List<Unit> units) {
         List<Unit> deadUnits = units.stream().filter(unit -> unit.isDead()).collect(Collectors.toList());
         return deadUnits;
     }
 
-    // Returns total army health
+    /**
+     * A method to get an army's total health point at any point. Easier to see who is the favourite in terms of hp before or under the battle.
+     * @param units list of different unit types
+     * @return integer of total army-health.
+     */
     public int getArmyHitpoints(List<Unit> units) {
         int sum = 0;
         for (Unit unit : units) {
@@ -137,7 +198,11 @@ public class Army {
         return sum;
     }
 
-    // Returns total army damage
+    /**
+     * A method to get an army's total damage at any point. May be easier indicate who is the favourite to win the fight.
+     * @param units list of different unit types
+     * @return integer value with army total damage.
+     */
     public int getArmyDamage(List<Unit> units) {
         int sum = 0;
         for (Unit unit : units) {
@@ -146,14 +211,13 @@ public class Army {
         return sum;
     }
 
-    // Returns total army armor
+    /**
+     * A method to get an army's total armor at any point. May be easier indicate who is the favourite to win the fight.
+     * @param units list of different unit types
+     * @return integer value with army total armor.
+     */
     public int getArmyArmor(List<Unit> units) {
         Integer sum = units.stream().map(u -> u.getArmor()).reduce(0, (a, b) -> a + b);
         return sum;
     }
-
-    // get total resbonus etc...
-    // Method to calculate which is the favourite in terms of damage/armor/hp
-
-    // need to add checks for that the correct unitlist is chosen from correct army.
 }

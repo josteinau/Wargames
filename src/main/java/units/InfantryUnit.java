@@ -22,6 +22,7 @@ public class InfantryUnit extends Unit {
 
     /**
      * Constructor for infantry unit with default values for attack and armor.
+     * (I) indicates that this is a infantry unit
      *
      * @param name   - name of the unit
      * @param health - health value of unit

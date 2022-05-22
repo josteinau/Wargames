@@ -1,17 +1,18 @@
 [] Surefire-plugin for mvn test
 [X][] Factory pattern unit-factory. - ikke testet!
 [] Unntakshåndtering - Alert istede for println?
-[X][][] Mangler Javadoc til klasser - design pattern - fixet for noen
+[X][X][] Mangler Javadoc til klasser - design pattern - fixet for noen
 [] Les fra fil fix
 [] GUI
 [] units.Unit-testing av alle klasser
-[] Terreng klasse
-[] group/artifact-id formatering - Junit dependency
-[] Fjern println - logging framework
+[X] Terreng klasse
+[X] group/artifact-id formatering - Junit dependency
+[X] Fjern println - logging framework
 
 
 Ideer:
 
+// Commander Aura - ranged aura -legolas
     // Ideas:
     /* public String generateRandomName(String randomName){
     if(orc){

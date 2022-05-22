@@ -156,16 +156,16 @@ public abstract class Unit implements Serializable {
     }
 
     /**
-     *
-     * @return
+     * Gets type of terrain, which changes different bonuses for different units.
+     * @return type of terrain
      */
     public Terrain getTerrainType(){
         return terrainType;
     }
 
     /**
-     *
-     * @param terrainType
+     * Sets the terrain to wanted terrain.
+     * @param terrainType enum terrain-type
      */
     public void setTerrainType(Terrain terrainType){
         if(!(terrainType == null)){
@@ -174,8 +174,6 @@ public abstract class Unit implements Serializable {
             throw new NullPointerException("Terrain type cannot be null");
         }
     }
-
-
 
     /**
      * Method to present the unit in representable string of all the attributes

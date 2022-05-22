@@ -25,6 +25,7 @@ public class RangedUnit extends Unit {
 
     /**
      * Constructor for ranged unit with default values for attack and armor.
+     * (R) indicates that this is a ranged unit
      *
      * @param name   - name of the unit
      * @param health - health value of unit
