@@ -1,14 +1,18 @@
+package Battle;
+
+import units.*;
+
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 public class Army {
     String armyName;
     List<Unit> units;
+    Terrain terrain;
 
     public Army(String name) throws IllegalArgumentException {
-        if(name.isBlank()) throw new IllegalArgumentException("Army-name cannot be null");
-        if(name.contains(",") || name.contains(".")) throw new IllegalArgumentException("Army-name cannot contain , or .");
+        if(name.isBlank()) throw new IllegalArgumentException("Battle.Army-name cannot be null");
+        if(name.contains(",") || name.contains(".")) throw new IllegalArgumentException("Battle.Army-name cannot contain , or .");
         this.armyName = name;
         this.units = new ArrayList<>();
     }
@@ -43,7 +47,7 @@ public class Army {
         }
     }
 
-    // Checks if the units-list has any units. fjernet list List<Unit> units i arg
+    // Checks if the units-list has any units. fjernet list List<units.Unit> units i arg
     public boolean hasUnits() {
         if ((units.isEmpty() || units == null)) {
             return false;
@@ -51,7 +55,7 @@ public class Army {
         return true;
     }
 
-    // Prints all units to screen, ex: Horde.getAllUnits(orcs); List<Unit> units
+    // Prints all units to screen, ex: Horde.getAllUnits(orcs); List<units.Unit> units
     public List<Unit> getAllUnits(List<Unit> units) {
         List<Unit> u = new ArrayList<Unit>();
         for (int i = 0; i < units.size(); i++) {
@@ -90,7 +94,7 @@ public class Army {
 
     // 4 methods to get specific units into a list. In lambda and stream as required.
     // Printed as: XXXX units: [1,2,..,n] -> Returns [] if empty
-    public List<Unit> getInfantryUnits(List<Unit> units) { //List<Unit> units
+    public List<Unit> getInfantryUnits(List<Unit> units) { //List<units.Unit> units
         List<Unit> infUnits = units.stream().filter(item -> item instanceof InfantryUnit).collect(Collectors.toList());
         System.out.println("Infantry units:");
         return infUnits;

@@ -1,0 +1,4 @@
+Humans-army
+units.CommanderUnit Arthas(*) 100
+units.InfantryUnit Erik(I) 25
+units.InfantryUnit Per(I) 25

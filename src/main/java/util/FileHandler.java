@@ -1,3 +1,8 @@
+package util;
+
+import Battle.Army;
+import units.Unit;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -5,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**The FileHandler makes it possible to write and read Units to and from a file.
+/**The util.FileHandler makes it possible to write and read Units to and from a file.
  They are given in the following format:
- Unit-type Unit-name(x) Unit-health. x represents a letter that indicates which type of unit.
+ units.Unit-type units.Unit-name(x) units.Unit-health. x represents a letter that indicates which type of unit.
  *
  *
  */
@@ -57,7 +62,7 @@ public class FileHandler {
                 String[] tokens = line.split(" ");
                 if (tokens.length != 3) {
                     throw new IOException("Line data '" + line + "' is invalid. " +
-                            "Make sure each line is on the form 'Unit-type Unit-name Unit-health)'");
+                            "Make sure each line is on the form 'units.Unit-type units.Unit-name units.Unit-health)'");
                 }
             }
         } catch (IOException e) {

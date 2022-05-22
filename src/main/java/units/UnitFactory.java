@@ -1,6 +1,5 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+package units;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,20 +46,8 @@ public class UnitFactory {
                 factoryUnits.add(createUnit(unitType, name, health));
             }
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException ("Unit type does not exist, giving error: " + e);
+            throw new IllegalArgumentException ("units.Unit type does not exist, giving error: " + e);
         }
         return factoryUnits;
     }
 }
-
-        /*
-        System.out.print("Enter name of unit to add. Commander/Cavalry/Infantry/Range ");
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String type = br.readLine();
-        System.out.print("Enter the number of units to be added: ");
-        int numUnits = Integer.parseInt(br.readLine());
-        for (int i = 0; i < numUnits; i++) {
-            Unit p = createUnit(type);
-            factoryUnits.add(p);
-
-         */

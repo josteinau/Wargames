@@ -1,3 +1,8 @@
+import Battle.Army;
+import Battle.Battle;
+import units.*;
+import util.FileHandler;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -51,8 +56,8 @@ public class Main {
         System.out.print("Enter the number of units to be added: \n");
         int units = Integer.parseInt(br.readLine());
         for (int i = 0; i < units; i++) {
-            // Unit p = uf.createUnit(type, name, health);
-            orcs.add(p);
+            // units.Unit p = uf.createUnit(type, name, health);
+            // orcs.add(p);
         }
         System.out.println(Horde.getName());
         System.out.println(hums);
@@ -64,7 +69,7 @@ public class Main {
         Thread.sleep(2000);
 
 
-        // Battle simulated in main, as JAVAFX is not yet set up! Doing this before deadline 23th of may.
+        // Battle.Battle simulated in main, as JAVAFX is not yet set up! Doing this before deadline 23th of may.
         System.out.println("Starting hitpoints for Horde: " + Horde.getArmyHitpoints(orcs));
         System.out.println("Starting hitpoints for Humans: " + Humans.getArmyHitpoints(hums));
         Thread.sleep(5000);

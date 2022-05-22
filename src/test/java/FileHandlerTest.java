@@ -1,4 +1,7 @@
 import org.junit.Test;
+import units.CavalryUnit;
+import units.Unit;
+import util.FileHandler;
 
 import java.io.File;
 import java.io.IOException;

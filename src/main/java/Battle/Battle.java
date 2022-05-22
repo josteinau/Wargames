@@ -1,6 +1,4 @@
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.List;
+package Battle;
 
 public class Battle {
     private Army armyOne;

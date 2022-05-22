@@ -1,4 +1,8 @@
-public class CommanderUnit extends CavalryUnit{
+package units;
+
+import units.CavalryUnit;
+
+public class CommanderUnit extends CavalryUnit {
 
     // Carry +tier unit, + armor, + health, + attack
     public CommanderUnit(String name, int health, int attack, int armor) {

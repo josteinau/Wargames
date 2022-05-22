@@ -1,8 +1,12 @@
+package units;
+
+import Battle.Terrain;
+
 import java.io.Serializable;
 
 /** This is a class for units.
  * A unit has a name, health, attack damage and armor points.
- * The unit class is the superclass to CavalryUnit, CommanderUnit, InfantryUnit and RangedUnit-classes.
+ * The unit class is the superclass to units.CavalryUnit, units.CommanderUnit, units.InfantryUnit and units.RangedUnit-classes.
  * The unit can attack an opponent, which can result in death for the defending unit or the attacking unit.
  */
 
@@ -11,6 +15,7 @@ public abstract class Unit implements Serializable {
     int health;
     int attack;
     int armor;
+    private Terrain terrainType;
 
     /**
      * Constructor that creates a unit instance
@@ -23,16 +28,16 @@ public abstract class Unit implements Serializable {
     // Units has (X) after name in the subclasses to indicate which type of unit.
     public Unit(String name, int health, int attack, int armor) throws IllegalArgumentException {
         if(name.isBlank() || name.isEmpty()){
-            throw new IllegalArgumentException("Unit name cannot be null");
+            throw new IllegalArgumentException("units.Unit name cannot be null");
         }
         if(health <= 0){
-            throw new IllegalArgumentException("Unit health cannot be null");
+            throw new IllegalArgumentException("units.Unit health cannot be null");
         }
         if(attack <= 0){
-            throw new IllegalArgumentException("Unit attack cannot be null");
+            throw new IllegalArgumentException("units.Unit attack cannot be null");
         }
         if(armor <= 0){
-            throw new IllegalArgumentException("Unit armor cannot be null");
+            throw new IllegalArgumentException("units.Unit armor cannot be null");
         }
         this.name = name;
         this.health = health;
@@ -149,6 +154,28 @@ public abstract class Unit implements Serializable {
             return false;
         }
     }
+
+    /**
+     *
+     * @return
+     */
+    public Terrain getTerrainType(){
+        return terrainType;
+    }
+
+    /**
+     *
+     * @param terrainType
+     */
+    public void setTerrainType(Terrain terrainType){
+        if(!(terrainType == null)){
+            this.terrainType = terrainType;
+        }else{
+            throw new NullPointerException("Terrain type cannot be null");
+        }
+    }
+
+
 
     /**
      * Method to present the unit in representable string of all the attributes
