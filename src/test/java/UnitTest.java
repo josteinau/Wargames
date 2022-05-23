@@ -6,6 +6,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import units.*;
 
+/**
+ * A class to test many of the different unit-methods.
+ */
+
 public class UnitTest {
     CavalryUnit cavalryUnit;
     CommanderUnit commanderUnit;

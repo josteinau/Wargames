@@ -16,7 +16,7 @@ public class UnitFactory {
      * @return a new unit of your chosen type, name and health!
      * @throws IllegalArgumentException if somehow you chose a unit type that does not exist!
      */
-    public Unit createUnit(UnitType type, String name, int health) throws IllegalArgumentException {
+    public static Unit createUnit(UnitType type, String name, int health) throws IllegalArgumentException {
         if (type == null)
             return null;
         switch (type) {

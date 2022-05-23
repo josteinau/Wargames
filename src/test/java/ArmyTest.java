@@ -9,7 +9,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-
+/**
+ * A class to test many of the different army-methods.
+ */
 public class ArmyTest {
     CavalryUnit cavalryUnit;
     CommanderUnit commanderUnit;

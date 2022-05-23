@@ -27,7 +27,9 @@ public class Battle {
      * @param armyTwo     consists of different unit types
      * @param terrainType enum terrain-type
      */
-    public Battle(Army armyOne, Army armyTwo, Terrain terrainType) {
+    public Battle(Army armyOne, Army armyTwo, Terrain terrainType) throws IllegalArgumentException{
+        if(!armyOne.hasUnits() || !armyTwo.hasUnits())
+            throw new IllegalArgumentException("Not possible to enter battle without units in the army");
         this.armyOne = armyOne;
         this.armyTwo = armyTwo;
 

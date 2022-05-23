@@ -26,12 +26,7 @@ public class Army {
         if (name.contains(",") || name.contains("."))
             throw new IllegalArgumentException("Army-name cannot contain , or .");
         this.armyName = name;
-        if(!units.isEmpty()){
-            this.units = new ArrayList<>();
-            addAll(units);
-        }
-        this.units = units;
-
+        this.units = new ArrayList<>();
     }
 
     /**
@@ -41,7 +36,6 @@ public class Army {
      * @param unit list of different units
      */
     public Army(String name, List<Unit> unit) {
-
         this.armyName = name;
         this.units = unit;
     }
