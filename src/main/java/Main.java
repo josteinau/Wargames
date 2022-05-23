@@ -1,21 +1,20 @@
+
 import javafx.application.Application;
-import javafx.scene.Group;
+
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
+
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
-import GUI.*;
-
 
 import java.io.IOException;
+
 
 public class Main extends Application {
 
     public static void main(String[] args) throws IOException, InterruptedException {
+
         Application.launch(args);
     }
 
@@ -38,7 +37,7 @@ public class Main extends Application {
             Image icon = new Image("file:GUI/OrcWar.PNG");
             primaryStage.getIcons().add(icon);
             primaryStage.setWidth(1280);
-            primaryStage.setHeight(760);
+            primaryStage.setHeight(900);
             primaryStage.setResizable(false);
             primaryStage.setTitle("Wargames");
             primaryStage.setScene(scene);

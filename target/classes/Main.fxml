@@ -3,55 +3,95 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="902.0" prefWidth="1260.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
    <children>
-      <Button fx:id="addArmyTwo" layoutX="678.0" layoutY="341.0" mnemonicParsing="false" text="Add to armyTwo" />
-      <Button fx:id="addArmyOne" layoutX="677.0" layoutY="140.0" mnemonicParsing="false" text="Add to armyOne" />
-    <AnchorPane layoutX="828.0" layoutY="259.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
-      <AnchorPane layoutX="828.0" layoutY="58.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
-      <AnchorPane layoutX="1040.0" layoutY="58.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
-      <AnchorPane layoutX="1040.0" layoutY="259.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
-      <Label layoutX="1096.0" layoutY="26.0" text="Unit counter">
+    <AnchorPane fx:id="UnitCounterOne" layoutX="56.0" layoutY="391.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
+      <AnchorPane fx:id="fullArmyOne" layoutX="55.0" layoutY="58.0" minHeight="0.0" minWidth="0.0" prefHeight="275.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
+      <AnchorPane fx:id="fullArmyTwo" layoutX="1040.0" layoutY="58.0" minHeight="0.0" minWidth="0.0" prefHeight="275.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
+      <AnchorPane fx:id="unitCounterTwo" layoutX="1040.0" layoutY="391.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
+      <Label fx:id="armyTwo" layoutX="1108.0" layoutY="26.0" text="ArmyTwo">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="892.0" layoutY="26.0" text="Alive units">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Pane layoutX="19.0" layoutY="506.0" prefHeight="182.0" prefWidth="633.0" style="-fx-background-color: lightgray;" />
-      <Pane layoutX="19.0" layoutY="53.0" prefHeight="405.0" prefWidth="633.0" style="-fx-background-color: lightgray;">
+      <Pane fx:id="battleConsole" layoutX="317.0" layoutY="545.0" prefHeight="309.0" prefWidth="664.0" style="-fx-background-color: lightgray;">
          <children>
-            <Label layoutX="457.0" layoutY="203.0" text="Quick add units" />
-            <CheckBox layoutX="457.0" layoutY="232.0" mnemonicParsing="false" text="Commander Unit" />
-            <CheckBox layoutX="457.0" layoutY="261.0" mnemonicParsing="false" text="Cavalry Unit" />
-            <CheckBox layoutX="457.0" layoutY="289.0" mnemonicParsing="false" text="Infantry Unit" />
-            <CheckBox layoutX="457.0" layoutY="316.0" mnemonicParsing="false" text="Ranged unit" />
+            <Label layoutX="304.0" layoutY="7.0" prefHeight="28.0" prefWidth="57.0" text="Battle">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+         </children></Pane>
+      <Pane fx:id="unitConsole" layoutX="317.0" layoutY="58.0" prefHeight="405.0" prefWidth="664.0" style="-fx-background-color: lightgray;">
+         <children>
+            <Label layoutX="424.0" layoutY="61.0" prefHeight="19.0" prefWidth="220.0" text="Quick add units with default values" />
+            <CheckBox fx:id="quickCommander" layoutX="534.0" layoutY="121.0" mnemonicParsing="false" text="Commander" />
+            <CheckBox fx:id="quickCavalry" layoutX="433.0" layoutY="155.0" mnemonicParsing="false" text="Cavalry" />
+            <CheckBox fx:id="quickInfantry" layoutX="534.0" layoutY="155.0" mnemonicParsing="false" text="Infantry" />
+            <CheckBox fx:id="quickRanged" layoutX="432.0" layoutY="121.0" mnemonicParsing="false" text="Ranged" />
+            <Button fx:id="addArmyOne" layoutX="185.0" layoutY="347.0" mnemonicParsing="false" text="Add to armyOne" />
+            <Button fx:id="addArmyTwo" layoutX="343.0" layoutY="347.0" mnemonicParsing="false" text="Add to armyTwo" />
+            <Label layoutX="287.0" layoutY="14.0" prefHeight="28.0" prefWidth="112.0" text="Choose units">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="checkInfantry" layoutX="309.0" layoutY="104.0" mnemonicParsing="false" text="Infantry" />
+            <CheckBox fx:id="checkCavalry" layoutX="28.0" layoutY="104.0" mnemonicParsing="false" text="Cavalry" />
+            <CheckBox fx:id="checkCommander" layoutX="202.0" layoutY="104.0" mnemonicParsing="false" text="Commander" />
+            <CheckBox fx:id="checkRanged" layoutX="108.0" layoutY="104.0" mnemonicParsing="false" text="Ranged" />
+            <TextField fx:id="unitName" layoutX="32.0" layoutY="166.0" />
+            <TextField fx:id="unitAmount" layoutX="216.0" layoutY="231.0" />
+            <TextField fx:id="unitArmor" layoutX="32.0" layoutY="231.0" />
+            <TextField fx:id="unitHealth" layoutX="217.0" layoutY="166.0" />
+            <Separator layoutX="408.0" layoutY="66.0" orientation="VERTICAL" prefHeight="200.0" />
+            <Label layoutX="61.0" layoutY="138.0" prefHeight="19.0" prefWidth="112.0" text="Name your unit" />
+            <Label layoutX="146.0" layoutY="61.0" prefHeight="19.0" prefWidth="112.0" text="Check type of unit" />
+            <Label layoutX="253.0" layoutY="138.0" prefHeight="19.0" prefWidth="112.0" text="Health value" />
+            <Label layoutX="61.0" layoutY="199.0" prefHeight="19.0" prefWidth="112.0" text="Armor value" />
+            <Label layoutX="241.0" layoutY="199.0" prefHeight="19.0" prefWidth="113.0" text="Amount of this unit" />
+            <TextField fx:id="quickAmount" layoutX="450.0" layoutY="231.0" />
+            <Label layoutX="466.0" layoutY="193.0" prefHeight="19.0" prefWidth="113.0" text="Amount of this unit" />
          </children>
       </Pane>
-      <Button fx:id="addArmyTwo1" layoutX="706.0" layoutY="473.0" mnemonicParsing="false" text="FIGHT!" />
-      <Button fx:id="addArmyTwo11" layoutX="690.0" layoutY="624.0" mnemonicParsing="false" text="Restart fight" />
-      <Button layoutX="694.0" layoutY="523.0" mnemonicParsing="false" text="Play/Pause" />
-      <Button fx:id="addArmyTwo111" layoutX="690.0" layoutY="661.0" mnemonicParsing="false" text="Reset teams" />
-      <AnchorPane layoutX="828.0" layoutY="502.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
-      <AnchorPane layoutX="1040.0" layoutY="502.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
-      <Label layoutX="981.0" layoutY="459.0" prefHeight="28.0" prefWidth="95.0" text="Graveyard">
+      <AnchorPane fx:id="deadArmyOne" layoutX="55.0" layoutY="617.0" minHeight="0.0" minWidth="0.0" prefHeight="237.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
+      <AnchorPane fx:id="deadArmyTwo" layoutX="1040.0" layoutY="617.0" minHeight="0.0" minWidth="0.0" prefHeight="237.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
+      <Label layoutX="108.0" layoutY="589.0" prefHeight="28.0" prefWidth="95.0" text="Graveyard">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <Label layoutX="307.0" layoutY="473.0" prefHeight="28.0" prefWidth="57.0" text="Battle">
+      <Button fx:id="fight" layoutX="528.0" layoutY="486.0" mnemonicParsing="false" text="FIGHT!" />
+      <Button fx:id="PlayPause" layoutX="704.0" layoutY="486.0" mnemonicParsing="false" text="Play/Pause" />
+      <Button fx:id="restartFight" layoutX="884.0" layoutY="486.0" mnemonicParsing="false" text="Restart fight" />
+      <Button fx:id="ResetTeams" layoutX="368.0" layoutY="486.0" mnemonicParsing="false" text="Reset teams" />
+      <Label fx:id="armyTwoGraveyard" layoutX="1093.0" layoutY="589.0" prefHeight="28.0" prefWidth="95.0" text="Graveyard">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <Label layoutX="280.0" layoutY="12.0" prefHeight="28.0" prefWidth="112.0" text="Choose units">
+      <Label layoutX="95.0" layoutY="350.0" prefHeight="28.0" prefWidth="122.0" text="Unit overview">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="armyTwoOverView" layoutX="1080.0" layoutY="350.0" prefHeight="28.0" prefWidth="122.0" text="Unit overview">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="armyOne" layoutX="123.0" layoutY="28.0" text="ArmyOne">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="557.0" layoutY="25.0" prefHeight="28.0" prefWidth="184.0" text="Welcome to wargame">
          <font>
             <Font size="19.0" />
          </font>
