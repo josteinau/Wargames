@@ -47,15 +47,13 @@
             <CheckBox fx:id="checkCommander" layoutX="202.0" layoutY="104.0" mnemonicParsing="false" text="Commander" />
             <CheckBox fx:id="checkRanged" layoutX="108.0" layoutY="104.0" mnemonicParsing="false" text="Ranged" />
             <TextField fx:id="unitName" layoutX="32.0" layoutY="166.0" />
-            <TextField fx:id="unitAmount" layoutX="216.0" layoutY="231.0" />
-            <TextField fx:id="unitArmor" layoutX="32.0" layoutY="231.0" />
+            <TextField fx:id="unitAmount" layoutX="121.0" layoutY="231.0" />
             <TextField fx:id="unitHealth" layoutX="217.0" layoutY="166.0" />
             <Separator layoutX="408.0" layoutY="66.0" orientation="VERTICAL" prefHeight="200.0" />
             <Label layoutX="61.0" layoutY="138.0" prefHeight="19.0" prefWidth="112.0" text="Name your unit" />
             <Label layoutX="146.0" layoutY="61.0" prefHeight="19.0" prefWidth="112.0" text="Check type of unit" />
             <Label layoutX="253.0" layoutY="138.0" prefHeight="19.0" prefWidth="112.0" text="Health value" />
-            <Label layoutX="61.0" layoutY="199.0" prefHeight="19.0" prefWidth="112.0" text="Armor value" />
-            <Label layoutX="241.0" layoutY="199.0" prefHeight="19.0" prefWidth="113.0" text="Amount of this unit" />
+            <Label layoutX="146.0" layoutY="203.0" prefHeight="19.0" prefWidth="113.0" text="Amount of this unit" />
             <TextField fx:id="quickAmount" layoutX="450.0" layoutY="231.0" />
             <Label layoutX="466.0" layoutY="193.0" prefHeight="19.0" prefWidth="113.0" text="Amount of this unit" />
          </children>

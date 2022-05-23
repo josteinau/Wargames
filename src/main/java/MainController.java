@@ -1,3 +1,4 @@
+import Battle.Army;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
 import javafx.collections.FXCollections;
@@ -7,6 +8,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import units.*;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainController {
@@ -44,13 +50,27 @@ public class MainController {
     @FXML
     private Button addArmyTwo;
 
+    CavalryUnit cavalryUnit;
+    CommanderUnit commanderUnit;
+    InfantryUnit infantryUnit;
+    RangedUnit rangedUnit;
+    UnitFactory unitFactory;
+    File armyOneFile = new File("armyOneFile.csv");
+    File armyTwoFile = new File("armyTwoFile.csv");
+    List<Unit> hums = new ArrayList<>();
+    Army Human = new Army("Army one");
+    List<Unit> orcs = new ArrayList<>();
+    Army Horde = new Army("Army Two");
+
 
     private ObservableSet<CheckBox> selectedCheckBoxes = FXCollections.observableSet();
     private ObservableSet<CheckBox> unselectedCheckBoxes = FXCollections.observableSet();
     private IntegerBinding numCheckBoxesSelected = Bindings.size(selectedCheckBoxes);
     private final int maxNumSelected = 1;
 
+
     public void initialize() {
+        // Checkboxes
         configureCheckBox(checkRanged);
         configureCheckBox(checkCavalry);
         configureCheckBox(checkCommander);
@@ -59,7 +79,6 @@ public class MainController {
         configureCheckBox(quickInfantry);
         configureCheckBox(quickRanged);
         configureCheckBox(quickCavalry);
-
 
         addArmyOne.setDisable(true);
         addArmyTwo.setDisable(true);
@@ -75,8 +94,26 @@ public class MainController {
                 addArmyTwo.setDisable(false);
             }
         });
+    }
+    @FXML
+    private void selectedArmyButton(ActionEvent actionEvent){
+        while(!addArmyOne.isDisabled() && !addArmyTwo.isDisabled()){
+            if(addArmyOne.isPressed()){
 
+            }
+        }
+    }
+    @FXML
+    private void formUnits(ActionEvent actionEvent){
+        try{
+            if(checkCavalry.isSelected()){
+                cavalryUnit = (CavalryUnit)
+                        UnitFactory.createUnit(UnitType.CAVALRY_UNIT,unitName.getText(), Integer.parseInt(unitHealth.getText()));
 
+            }
+        }catch (Exception e){
+            e.getMessage();
+        }
     }
 
     private void configureCheckBox(CheckBox checkBox) {
@@ -95,7 +132,6 @@ public class MainController {
             }
         });
     }
-
 
     public void fight(ActionEvent e) {
         System.out.println("fighting");
