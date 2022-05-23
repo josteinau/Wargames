@@ -11,10 +11,10 @@
    <children>
       <Button fx:id="addArmyTwo" layoutX="678.0" layoutY="341.0" mnemonicParsing="false" text="Add to armyTwo" />
       <Button fx:id="addArmyOne" layoutX="677.0" layoutY="140.0" mnemonicParsing="false" text="Add to armyOne" />
-    <AnchorPane layoutX="828.0" layoutY="259.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
-      <AnchorPane layoutX="828.0" layoutY="58.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
-      <AnchorPane layoutX="1040.0" layoutY="58.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
-      <AnchorPane layoutX="1040.0" layoutY="259.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
+    <AnchorPane fx:id="aliveArmyTwo" layoutX="828.0" layoutY="259.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
+      <AnchorPane fx:id="aliveArmyOne" layoutX="828.0" layoutY="58.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
+      <AnchorPane fx:id="unitCounterOne" layoutX="1040.0" layoutY="58.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
+      <AnchorPane fx:id="unitCounterTwo" layoutX="1040.0" layoutY="259.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
       <Label layoutX="1096.0" layoutY="26.0" text="Unit counter">
          <font>
             <Font size="16.0" />
@@ -25,8 +25,8 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Pane layoutX="19.0" layoutY="506.0" prefHeight="182.0" prefWidth="633.0" style="-fx-background-color: lightgray;" />
-      <Pane layoutX="19.0" layoutY="53.0" prefHeight="405.0" prefWidth="633.0" style="-fx-background-color: lightgray;">
+      <Pane fx:id="battleConsole" layoutX="19.0" layoutY="506.0" prefHeight="182.0" prefWidth="633.0" style="-fx-background-color: lightgray;" />
+      <Pane fx:id="unitConsole" layoutX="19.0" layoutY="53.0" prefHeight="405.0" prefWidth="633.0" style="-fx-background-color: lightgray;">
          <children>
             <Label layoutX="457.0" layoutY="203.0" text="Quick add units" />
             <CheckBox layoutX="457.0" layoutY="232.0" mnemonicParsing="false" text="Commander Unit" />
@@ -35,12 +35,12 @@
             <CheckBox layoutX="457.0" layoutY="316.0" mnemonicParsing="false" text="Ranged unit" />
          </children>
       </Pane>
-      <Button fx:id="addArmyTwo1" layoutX="706.0" layoutY="473.0" mnemonicParsing="false" text="FIGHT!" />
-      <Button fx:id="addArmyTwo11" layoutX="690.0" layoutY="624.0" mnemonicParsing="false" text="Restart fight" />
-      <Button layoutX="694.0" layoutY="523.0" mnemonicParsing="false" text="Play/Pause" />
-      <Button fx:id="addArmyTwo111" layoutX="690.0" layoutY="661.0" mnemonicParsing="false" text="Reset teams" />
-      <AnchorPane layoutX="828.0" layoutY="502.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
-      <AnchorPane layoutX="1040.0" layoutY="502.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
+      <Button fx:id="fight" layoutX="706.0" layoutY="473.0" mnemonicParsing="false" text="FIGHT!" />
+      <Button fx:id="restartFight" layoutX="690.0" layoutY="597.0" mnemonicParsing="false" text="Restart fight" />
+      <Button fx:id="PlayPause" layoutX="694.0" layoutY="551.0" mnemonicParsing="false" text="Play/Pause" />
+      <Button fx:id="ResetTeams" layoutX="691.0" layoutY="644.0" mnemonicParsing="false" text="Reset teams" />
+      <AnchorPane fx:id="deadArmyOne" layoutX="828.0" layoutY="502.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
+      <AnchorPane fx:id="deadArmyTwo" layoutX="1040.0" layoutY="502.0" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: GRAY;" />
       <Label layoutX="981.0" layoutY="459.0" prefHeight="28.0" prefWidth="95.0" text="Graveyard">
          <font>
             <Font size="19.0" />

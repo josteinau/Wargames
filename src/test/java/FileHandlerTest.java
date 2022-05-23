@@ -72,7 +72,7 @@ public class FileHandlerTest {
     public void readFromFileWithWrongFormat() throws IOException {
         List<Unit> hums = new ArrayList<>();
         Army Humans = new Army("Human army");
-        hums.add(new CommanderUnit("Arthas", 100));
+        hums.add(new CommanderUnit("Aretha's", 100));
         hums.add(new InfantryUnit("Erik", 25));
         hums.add(new InfantryUnit("Per", 25));
 

@@ -1,0 +1,20 @@
+
+
+Write dead units to file
+
+Get total health, armor and hitpoints from army
+
+Get odds pre-battle based on hp, hitpoints etc
+
+Commander Aura - if commander getName equals
+ranged aura, 10% increase ranged units
+Damage increase by 10%
+
+ generateRandomName(String randomName){
+    if(orc){
+    array[randomOrcNames]
+    if(human){
+    array[otherRandomNames]
+    return randomName
+
+Reduce armor for each hit, armor gets more and more broken. If not the commander-units are OP!
