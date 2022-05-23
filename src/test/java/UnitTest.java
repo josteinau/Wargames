@@ -2,6 +2,7 @@
 import Battle.Terrain;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import units.*;
 
@@ -11,7 +12,6 @@ public class UnitTest {
     InfantryUnit infantryUnit;
     RangedUnit rangedUnit;
     UnitFactory unitFactory;
-
 
     @BeforeEach
     void createUnits() {
@@ -24,10 +24,10 @@ public class UnitTest {
 
     @Test
     public void getName() {
-        Assertions.assertEquals("CavalryTest(C)", cavalryUnit.getName());
-        Assertions.assertEquals("CommanderTest(*)", commanderUnit.getName());
-        Assertions.assertEquals("InfantryTest(I)", infantryUnit.getName());
-        Assertions.assertEquals("RangedTest(R)", rangedUnit.getName());
+        Assertions.assertEquals("CavalryTest", cavalryUnit.getName());
+        Assertions.assertEquals("CommanderTest", commanderUnit.getName());
+        Assertions.assertEquals("InfantryTest", infantryUnit.getName());
+        Assertions.assertEquals("RangedTest", rangedUnit.getName());
     }
 
     @Test
@@ -72,5 +72,24 @@ public class UnitTest {
         Assertions.assertEquals(9,cavalryUnit.getAttackBonus());
         cavalryUnit.setTerrainType(Terrain.HILL);
         Assertions.assertEquals(3,cavalryUnit.getAttackBonus());
+    }
+    @Test
+    /**
+     * Will not cast exception on null name because i added (I) etc for each unit type, if i remove this it will work.
+     * But i would rather have the indicator of the unit and fail this test. Removing the indicator from the constructors will "fix" the test.
+     * Update - removed indicators for now.
+     */
+    public void testExceptionsOnIllegalArguments(){
+        Assertions.assertThrows(IllegalArgumentException.class,() -> unitFactory.createUnit(UnitType.INFANTRY_UNIT,"Names",-2));
+        Assertions.assertThrows(IllegalArgumentException.class,() -> infantryUnit.setName(""));
+        Assertions.assertThrows(IllegalArgumentException.class,() -> unitFactory.createUnit(UnitType.INFANTRY_UNIT,"",10));
+    }
+    @Test
+    public void attack(){
+        Assertions.assertEquals(100,commanderUnit.getHealth());
+        cavalryUnit.attack(commanderUnit);
+        Assertions.assertEquals(92,commanderUnit.getHealth());
+        commanderUnit.attack(cavalryUnit);
+        Assertions.assertEquals(false,cavalryUnit.isDead());
     }
 }

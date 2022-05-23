@@ -22,11 +22,16 @@ public class Army {
      * @throws IllegalArgumentException if the army is null or uses , or .
      */
     public Army(String name) throws IllegalArgumentException {
-        if (name.isBlank()) throw new IllegalArgumentException("Battle.Army-name cannot be null");
+        if (name.isBlank()) throw new IllegalArgumentException("Army-name cannot be null");
         if (name.contains(",") || name.contains("."))
-            throw new IllegalArgumentException("Battle.Army-name cannot contain , or .");
+            throw new IllegalArgumentException("Army-name cannot contain , or .");
         this.armyName = name;
-        this.units = new ArrayList<>();
+        if(!units.isEmpty()){
+            this.units = new ArrayList<>();
+            addAll(units);
+        }
+        this.units = units;
+
     }
 
     /**
@@ -36,6 +41,7 @@ public class Army {
      * @param unit list of different units
      */
     public Army(String name, List<Unit> unit) {
+
         this.armyName = name;
         this.units = unit;
     }
@@ -64,8 +70,8 @@ public class Army {
      * @param newUnit list of new units.
      */
     public void addAll(List<Unit> newUnit) {
-        for (int i = 0; i < units.size(); i++) {
-            addUnit(newUnit.get(i));
+        for(Unit unit : units){
+            this.addUnit(unit);
         }
     }
 
@@ -95,6 +101,15 @@ public class Army {
         }
         return true;
     }
+
+    /**
+     * A method for getting the whole size of army
+     * @return the size of the army as integer
+     */
+    public int getSize() {
+        return units.size();
+    }
+
 
     /**
      * method to get all units of army
@@ -154,7 +169,6 @@ public class Army {
      */
     public List<Unit> getInfantryUnits(List<Unit> units) {
         List<Unit> infUnits = units.stream().filter(item -> item instanceof InfantryUnit).collect(Collectors.toList());
-        System.out.println("Infantry units:");
         return infUnits;
     }
 
@@ -166,7 +180,6 @@ public class Army {
      */
     public List<Unit> getCavalryUnits(List<Unit> units) {
         List<Unit> cavUnits = units.stream().filter(item -> item instanceof CavalryUnit).collect(Collectors.toList());
-        System.out.println("Cavalry units:");
         return cavUnits;
     }
 
@@ -178,7 +191,6 @@ public class Army {
      */
     public List<Unit> getRangedUnits(List<Unit> units) {
         List<Unit> ranUnits = units.stream().filter(item -> item instanceof RangedUnit).collect(Collectors.toList());
-        System.out.println("Ranged units:");
         return ranUnits;
     }
 
@@ -190,7 +202,6 @@ public class Army {
      */
     public List<Unit> getCommanderUnits(List<Unit> units) {
         List<Unit> comUnits = units.stream().filter(item -> item instanceof CommanderUnit).collect(Collectors.toList());
-        System.out.println("Commander units:");
         return comUnits;
     }
 

@@ -28,9 +28,9 @@ public abstract class Unit implements Serializable {
      * @throws IllegalArgumentException if required criteria are not met
      */
     // Units has (X) after name in the subclasses to indicate which type of unit.
-    public Unit(String name, int health, int attack, int armor) throws IllegalArgumentException, NullPointerException {
+    public Unit(String name, int health, int attack, int armor) throws IllegalArgumentException {
         if (name.isBlank() || name.isEmpty() || name.equals("")) {
-            throw new NullPointerException("Unit name cannot be null");
+            throw new IllegalArgumentException("Provide a unit name");
         }
         if (health <= 0) {
             throw new IllegalArgumentException("Unit health cannot be null");
@@ -81,12 +81,15 @@ public abstract class Unit implements Serializable {
     }
 
     /**
-     * Gives the unit a new name!
-     *
-     * @param name value is current name of unit.
+     * Gives the unit a name!
+     * @param name wanted name
+     * @throws IllegalArgumentException if name is null or empty
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String name) throws IllegalArgumentException{
+        if ("".equals(name) || name == null) {
+            throw new IllegalArgumentException("Name should not be null or empty");
+        }
+        this.name=name;
     }
 
     /**

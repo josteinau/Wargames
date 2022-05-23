@@ -18,7 +18,7 @@ public class RangedUnit extends Unit {
      * @param attack - attack value of unit
      * @param armor  - armor value of unit
      */
-    public RangedUnit(String name, int health, int attack, int armor) {
+    public RangedUnit(String name, int health, int attack, int armor) throws IllegalArgumentException{
         super(name, health, attack, armor);
         this.startHealth = health;
     }
@@ -30,8 +30,8 @@ public class RangedUnit extends Unit {
      * @param name   - name of the unit
      * @param health - health value of unit
      */
-    public RangedUnit(String name, int health) {
-        super(name + "(R)", health, 15, 8);
+    public RangedUnit(String name, int health) throws IllegalArgumentException{
+        super(name, health, 15, 8);
         this.startHealth = health;
     }
 
