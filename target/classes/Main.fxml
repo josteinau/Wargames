@@ -65,10 +65,10 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <Button fx:id="fight" layoutX="528.0" layoutY="486.0" mnemonicParsing="false" text="FIGHT!" />
-      <Button fx:id="PlayPause" layoutX="704.0" layoutY="486.0" mnemonicParsing="false" text="Play/Pause" />
-      <Button fx:id="restartFight" layoutX="884.0" layoutY="486.0" mnemonicParsing="false" text="Restart fight" />
-      <Button fx:id="ResetTeams" layoutX="368.0" layoutY="486.0" mnemonicParsing="false" text="Reset teams" />
+      <Button fx:id="fight" layoutX="512.0" layoutY="486.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="80.0" text="FIGHT!" />
+      <Button fx:id="PlayPause" layoutX="701.0" layoutY="486.0" mnemonicParsing="false" text="Play/Pause" />
+      <Button fx:id="restartFight" layoutX="892.0" layoutY="486.0" mnemonicParsing="false" text="Restart fight" />
+      <Button fx:id="ResetTeams" layoutX="317.0" layoutY="486.0" mnemonicParsing="false" text="Reset teams" />
       <Label fx:id="armyTwoGraveyard" layoutX="1093.0" layoutY="589.0" prefHeight="28.0" prefWidth="95.0" text="Graveyard">
          <font>
             <Font size="19.0" />

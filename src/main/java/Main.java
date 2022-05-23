@@ -36,9 +36,11 @@ public class Main  { // extends Application
         Army testHums = new Army("Humans",hums);
 
         hums.add(new CommanderUnit("Arthas", 100));
+        hums.add(new CommanderUnit("HumanWarlord", 150));
         hums.add(new InfantryUnit("Erik", 25));
         hums.add(new CavalryUnit("Per", 25));
         hums.add(new RangedUnit("Knut", 25));
+        hums.add(new RangedUnit("Elio", 30));
 
         orcs.add(new CommanderUnit("Thrall", 150));
         orcs.add(new InfantryUnit("Grom", 40));
