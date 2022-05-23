@@ -28,18 +28,18 @@ public abstract class Unit implements Serializable {
      * @throws IllegalArgumentException if required criteria are not met
      */
     // Units has (X) after name in the subclasses to indicate which type of unit.
-    public Unit(String name, int health, int attack, int armor) throws IllegalArgumentException {
-        if (name.isBlank() || name.isEmpty()) {
-            throw new IllegalArgumentException("units.Unit name cannot be null");
+    public Unit(String name, int health, int attack, int armor) throws IllegalArgumentException, NullPointerException {
+        if (name.isBlank() || name.isEmpty() || name.equals("")) {
+            throw new NullPointerException("Unit name cannot be null");
         }
         if (health <= 0) {
-            throw new IllegalArgumentException("units.Unit health cannot be null");
+            throw new IllegalArgumentException("Unit health cannot be null");
         }
         if (attack <= 0) {
-            throw new IllegalArgumentException("units.Unit attack cannot be null");
+            throw new IllegalArgumentException("Unit attack cannot be null");
         }
         if (armor <= 0) {
-            throw new IllegalArgumentException("units.Unit armor cannot be null");
+            throw new IllegalArgumentException("Unit armor cannot be null");
         }
         this.name = name;
         this.health = health;

@@ -1,46 +1,52 @@
-import Battle.Army;
-import Battle.Battle;
-import jdk.swing.interop.SwingInterOpUtils;
-import units.*;
-import util.FileHandler;
-import Battle.Terrain;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
+import GUI.*;
 
-import java.io.File;
+
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-public class Main {
+public class Main extends Application {
+
     public static void main(String[] args) throws IOException, InterruptedException {
-        FileHandler fh = new FileHandler();
-        UnitFactory uf = new UnitFactory();
-        List<Unit> hums = new ArrayList<>();
-        List<Unit> orcs = new ArrayList<>();
+        Application.launch(args);
+    }
 
-        File orcFile = new File("Orcs.csv");
-        File humanFile = new File("Humans.csv");
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
 
-        Army testOrc = new Army("Horde",orcs);
-        Army testHums = new Army("Humans",hums);
+            /**
+             * SCENE HERE
+             */
 
-        hums.add(new CommanderUnit("Arthas", 100));
-        hums.add(new InfantryUnit("Erik", 25));
-        hums.add(new InfantryUnit("Per", 25));
-
-        // Adding premade army
-        orcs.add(new CommanderUnit("Thrall", 150));
-        orcs.add(new InfantryUnit("Grom", 40));
-        orcs.add(new InfantryUnit("Khal", 25));
-        orcs.add(new RangedUnit("Gork", 25));
-        fh.writeUnits(orcs, orcFile);
-        fh.writeUnits(hums, humanFile);
-
-        Battle bts = new Battle(testOrc,testHums,Terrain.FOREST);
-
-
-        fh.writeUnits(orcs, orcFile);
-        fh.writeUnits(hums, humanFile);
-
+            // Scene sceneName = new Scene(root, Color.DARKGRAY);
+            Scene scene = new Scene(root);
+            String css = this.getClass().getResource("application.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            /**
+             * STAGE HERE
+             */
+            Image icon = new Image("file:GUI/OrcWar.PNG");
+            primaryStage.getIcons().add(icon);
+            primaryStage.setWidth(1280);
+            primaryStage.setHeight(760);
+            primaryStage.setResizable(false);
+            primaryStage.setTitle("Wargames");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
 
     }
+
 }
